@@ -1,1 +1,0 @@
-sasin zajebał 70 mln i nie poniósł konsekwencji
