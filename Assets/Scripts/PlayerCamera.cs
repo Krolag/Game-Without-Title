@@ -6,7 +6,7 @@ public class PlayerCamera : MonoBehaviour
 {
     //Variables
     private float rotationX;
-    private float mouseSensitivity = 100f;
+    float mouseSensitivity = 200f;
     public Transform player;
     
     // Start is called before the first frame update

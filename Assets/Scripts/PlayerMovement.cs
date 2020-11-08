@@ -19,7 +19,6 @@ public class PlayerMovement : MonoBehaviour
 
     private bool isGrounded;
 
-    //Sliding variables
     CapsuleCollider collider;
 
     float originalHeight;
@@ -27,7 +26,8 @@ public class PlayerMovement : MonoBehaviour
     public float reducedHeight;
     public float slideSpeed = 10f;
     public bool isSliding = false;
-    
+
+    private bool isSprinting = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +39,19 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Sprinting
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            isSprinting = true;
+            speed *= 2;
+        }
+        
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            isSprinting = false;
+            speed /= 2;
+        }
+
         moveForward = Input.GetAxis("Vertical") * speed;
         moveSide = Input.GetAxis("Horizontal") * speed;
         moveUp = Input.GetAxis("Jump") * jumpSpeed;
@@ -54,15 +67,17 @@ public class PlayerMovement : MonoBehaviour
         }
         
         //Sliding
-        if (Input.GetKeyDown(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
-            Slide();
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-            GoUp();
         
+        if (Input.GetKeyDown(KeyCode.Q))
+                Slide();
+        else if (Input.GetKeyUp(KeyCode.Q))
+                GoUp();
+        
+
         //Crouching
-        if(Input.GetKeyDown(KeyCode.LeftControl))
+        if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
             Crouch();
-        else if(Input.GetKeyUp(KeyCode.LeftControl))
+        else if(Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.C))
             GoUp();
     }
 
@@ -87,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
     {
         collider.height = reducedHeight;
         rig.AddForce(transform.forward * slideSpeed, ForceMode.VelocityChange);
+        isSprinting = false;
     }
     
     //Crouching

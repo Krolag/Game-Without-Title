@@ -50,8 +50,8 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\PlayerCamera.cs" />
+     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>C:/Users/ignol/Desktop/Game-Without-Title/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
