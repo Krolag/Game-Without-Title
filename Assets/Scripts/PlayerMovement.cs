@@ -5,11 +5,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //Variables
     private float moveForward;
-
     private float moveSide;
-
     private float moveUp;
 
     float speed = 5f;

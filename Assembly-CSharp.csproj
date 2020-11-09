@@ -50,13 +50,11 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-<<<<<<< Updated upstream
      <Compile Include="Assets\Scripts\DestroyBullet.cs" />
      <Compile Include="Assets\Scripts\Shooting.cs" />
-=======
->>>>>>> Stashed changes
      <Compile Include="Assets\Scripts\PlayerCamera.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Enemies\EnemyAI.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/GameDev/Unity/Game-Without-Title/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
