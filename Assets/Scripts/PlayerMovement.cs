@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-<<<<<<< Updated upstream
-=======
     //Zmienne do sprawdzania czy gracz znajduje sie w powietrzu czy nie
     public Transform GroundCheck;
     public float GroundDistanace = 0.4f; //<- promien kuli pod graczem
@@ -14,7 +12,6 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 velocity;
     
     //Zmienne do sterowania graczem w osiach XYZ
->>>>>>> Stashed changes
     private float moveForward;
     private float moveSide;
     private float moveUp;
