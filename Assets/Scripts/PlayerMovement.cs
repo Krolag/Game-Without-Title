@@ -5,12 +5,23 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+<<<<<<< Updated upstream
+=======
+    //Zmienne do sprawdzania czy gracz znajduje sie w powietrzu czy nie
+    public Transform GroundCheck;
+    public float GroundDistanace = 0.4f; //<- promien kuli pod graczem
+    public LayerMask GroundMask;
+    private Vector3 velocity;
+    
+    //Zmienne do sterowania graczem w osiach XYZ
+>>>>>>> Stashed changes
     private float moveForward;
     private float moveSide;
     private float moveUp;
-
-    float speed = 5f;
-    float jumpSpeed = 5f;
+    
+    //Zmienne okreslajace predkosc poruszania sie i predkosc skoku
+    public float Speed = 5f;
+    public float JumpSpeed = 5f;
     
     private Rigidbody rig;
 
@@ -18,59 +29,63 @@ public class PlayerMovement : MonoBehaviour
 
     CapsuleCollider collider;
 
-    float originalHeight;
+    //Zmienne okreslajace wysokosc gracza w zaleznosci od tego w jakims tanie sie znajduje (idle/crouching/sliding)
+    public float OriginalHeight;
+    public float ReducedHeight;
+    
+    //Zmienne okreslajace predkosc wslizgu i to czy wslizg wystepuje
+    public float SlideSpeed = 10f;
+    public bool IsSliding = false;
 
-    public float reducedHeight;
-    public float slideSpeed = 10f;
-    public bool isSliding = false;
-
+    //Zmienne okreslajaca predkosc w trakcie sprintu i to czy sprint wystepuje
+    public float SpeedMultiplier = 1.5f;
     private bool isSprinting = false;
+    
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody>();
         collider = GetComponent<CapsuleCollider>();
-        originalHeight = collider.height;
+        OriginalHeight = collider.height;
     }
 
     // Update is called once per frame
     void Update()
     {
+        isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistanace, GroundMask);
+
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
         //Sprinting
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             isSprinting = true;
-            speed *= 2;
+            Speed *= SpeedMultiplier;
         }
         
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             isSprinting = false;
-            speed /= 2;
+            Speed /= SpeedMultiplier;
         }
-
-        moveForward = Input.GetAxis("Vertical") * speed;
-        moveSide = Input.GetAxis("Horizontal") * speed;
-        moveUp = Input.GetAxis("Jump") * jumpSpeed;
         
-        //Moving the character forward and on side;
-        rig.velocity = (transform.forward * moveForward) + (transform.right * moveSide) + (transform.up * rig.velocity.y);
+        Movement();
         
         //Jumping
-        if (isGrounded && moveUp != 0)
-        {
-            rig.AddForce(transform.up * moveUp, ForceMode.VelocityChange);
-            isGrounded = false;
-        }
+        if (isGrounded && Input.GetKey(KeyCode.Space))
+            Jump();
         
         //Sliding
-        
-        if (Input.GetKeyDown(KeyCode.Q))
+        if(isSprinting)
+        {
+            if (Input.GetKeyDown(KeyCode.Q))//LeftControl))
                 Slide();
-        else if (Input.GetKeyUp(KeyCode.Q))
+            else if (Input.GetKeyUp(KeyCode.Q))//LeftControl))
                 GoUp();
+        }
         
-
         //Crouching
         if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
             Crouch();
@@ -94,22 +109,41 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     
+    //Movement
+    private void Movement()
+    {
+        moveForward = Input.GetAxis("Vertical") * Speed;
+        moveSide = Input.GetAxis("Horizontal") * Speed;
+
+        //Moving the character forward and on side;
+        rig.velocity = (transform.forward * moveForward) + (transform.right * moveSide) + (transform.up * rig.velocity.y); // <-- ten kawalek kodu powoduje ze sie podskakuje na schodach
+    }
+
+    //Jumping
+    private void Jump()
+    {
+        moveUp = Input.GetAxis("Jump") * JumpSpeed;
+        
+        rig.AddForce(transform.up * moveUp, ForceMode.VelocityChange);
+        isGrounded = false;
+    }
+    
     //Sliding
     private void Slide()
     {
-        collider.height = reducedHeight;
-        rig.AddForce(transform.forward * slideSpeed, ForceMode.VelocityChange);
+        collider.height = ReducedHeight;
+        rig.AddForce(transform.forward * SlideSpeed, ForceMode.Impulse);
         isSprinting = false;
     }
     
     //Crouching
-    void Crouch()
+    private void Crouch()
     {
-        collider.height = reducedHeight;
+        collider.height = ReducedHeight;
     }
     
     private void GoUp()
     {
-        collider.height = originalHeight;
+        collider.height = OriginalHeight;
     }
 }
