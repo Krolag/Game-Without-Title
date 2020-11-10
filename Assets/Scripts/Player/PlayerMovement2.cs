@@ -5,36 +5,44 @@ using UnityEngine;
 public class PlayerMovement2 : MonoBehaviour
 {
     public CharacterController controller;
-    public float Speed = 12f;
+    Vector3 velocity;
+    
+    //Zmienne okreslajace kolejno: aktualna predkosc gracza, sile grawitacji, wysokosc skoku
+    public float Speed = 8f;
     public float Gravity = -9.81f;
     public float JumpHeight = 3f;
         
+    //Zmienne sluzace do zbadaniac czy gracz jest w powietrzu czy na ziemmi
     public Transform GroundCheck;
     public float GroundDistance = 0.4f;
     public LayerMask GroundMask;
-    
-    Vector3 velocity;
     bool isGrounded;
 
+    //Zmienne sprawdzajace stan gracza
     private bool isSprinting = false;
-    public float SpeedMultiplier = 1.5f;
+    private bool isCrouching = false;
     
+    //Zmienne opisujace predkosc w zaleznosci od stanu w jakim znajduje sie gracz
+    public float SprintSpeed = 12f;
+    public float WalkSpeed = 8f;
+    public float CrouchSpeed = 5f;
+    
+    //Wysokosc gracza na stojaco / w przykucu
     public float OriginalHeight;
     public float ReducedHeight;
-    private bool isCrouching = false;
-
-
+    
     void Start()
     {
-        OriginalHeight = controller.height;
+        Speed = WalkSpeed; //Inicjacja predkosci poczatkowej
+        OriginalHeight = controller.height; //Inicjacja wysokosci poczatkowej
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        //Moving and jumping
+        //Poruszanie sie w osiach XYZ
         Move();
-
+        
+        //Podskok
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
@@ -43,15 +51,20 @@ public class PlayerMovement2 : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
         
-        
-        //Sprinting
-        if (Input.GetKeyDown(KeyCode.LeftShift)) 
+        //Sprint/chodzenie
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == false) 
         { 
             isSprinting = !isSprinting;
             Sprint();
         }
         
-        //Crouching
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == true) 
+        { 
+            isSprinting = !isSprinting;
+            Walk();
+        }
+        
+        //Skradanie
         if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
         {
             isCrouching = !isCrouching;
@@ -59,6 +72,7 @@ public class PlayerMovement2 : MonoBehaviour
         }
     }
 
+    //===================Funkcje=====================//
     private void Move()
     {
         isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
@@ -72,19 +86,22 @@ public class PlayerMovement2 : MonoBehaviour
         
         Vector3 move = transform.right * x +transform.forward * z;
 
-        controller.Move(move * Speed * Time.deltaTime); 
+        controller.Move(move * Time.deltaTime * Speed); 
     }
 
     private void Sprint()
     {
-        if (isSprinting == true)
+        Speed = SprintSpeed;
+        if (isCrouching)
         {
-            Speed *= SpeedMultiplier;
+            isCrouching = !isCrouching;
+            controller.height = OriginalHeight;
         }
-        else if (isSprinting == false)
-        {
-            Speed /= SpeedMultiplier;
-        }
+    }
+
+    private void Walk()
+    {
+        Speed = WalkSpeed;
     }
     
     private void Jump()
@@ -97,10 +114,14 @@ public class PlayerMovement2 : MonoBehaviour
         if (isCrouching == true)
         {
             controller.height = ReducedHeight;
+            Speed = CrouchSpeed;
+            if (isSprinting)
+                isSprinting = !isSprinting;
         }
-        else 
+        else
         {
             controller.height = OriginalHeight;
+            Speed = WalkSpeed;
         }
     }
     

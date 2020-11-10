@@ -441,6 +441,12 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 218429123}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &249159136 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5738973134398614882, guid: 51536f35cfdb8cf408b4423b62b11e97,
+    type: 3}
+  m_PrefabInstance: {fileID: 1483765222}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &259953345
 GameObject:
   m_ObjectHideFlags: 0
@@ -1271,7 +1277,9 @@ MonoBehaviour:
   GroundMask:
     serializedVersion: 2
     m_Bits: 256
-  SpeedMultiplier: 1.5
+  SprintSpeed: 12
+  WalkSpeed: 8
+  CrouchSpeed: 5
   OriginalHeight: 4
   ReducedHeight: 2
 --- !u!1001 &1483765222
@@ -1363,10 +1371,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5738973134553736966, guid: 51536f35cfdb8cf408b4423b62b11e97,
         type: 3}
+      propertyPath: Bullet
+      value: 
+      objectReference: {fileID: 1570052381574326402, guid: 9f1a527f6a3671f42a71067cacf7b89f,
+        type: 3}
+    - target: {fileID: 5738973134553736966, guid: 51536f35cfdb8cf408b4423b62b11e97,
+        type: 3}
       propertyPath: bullet
       value: 
       objectReference: {fileID: 1570052381574326402, guid: 9f1a527f6a3671f42a71067cacf7b89f,
         type: 3}
+    - target: {fileID: 5738973134553736966, guid: 51536f35cfdb8cf408b4423b62b11e97,
+        type: 3}
+      propertyPath: SpawnPoint
+      value: 
+      objectReference: {fileID: 249159136}
+    - target: {fileID: 5738973134553736966, guid: 51536f35cfdb8cf408b4423b62b11e97,
+        type: 3}
+      propertyPath: BulletSpeed
+      value: 66.6
+      objectReference: {fileID: 0}
     - target: {fileID: 7622168874953444247, guid: 51536f35cfdb8cf408b4423b62b11e97,
         type: 3}
       propertyPath: m_Layer

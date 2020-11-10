@@ -126,3 +126,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36469ec2566bedc48b4bc25a124e43d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletPosition: {fileID: 1570052381574326525}
+  Range: 300
