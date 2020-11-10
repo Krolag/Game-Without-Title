@@ -1,20 +1,36 @@
 m_ProjectFiles:
   m_ManifestFileStatus:
+<<<<<<< Updated upstream
     m_FilePath: C:/Users/ignol/Desktop/Game-Without-Title/Packages/manifest.json
+=======
+    m_FilePath: D:/Admin/STUDIA/SEM5/Podstawy gier komputerowych/Game-Without-Title/Packages/manifest.json
+>>>>>>> Stashed changes
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< Updated upstream
       ticks: 637401770561897430
     m_Hash: 3992235752
   m_LockFileStatus:
     m_FilePath: C:/Users/ignol/Desktop/Game-Without-Title/Packages/packages-lock.json
+=======
+      ticks: 637405214123307535
+    m_Hash: 3137811254
+  m_LockFileStatus:
+    m_FilePath: D:/Admin/STUDIA/SEM5/Podstawy gier komputerowych/Game-Without-Title/Packages/packages-lock.json
+>>>>>>> Stashed changes
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
+<<<<<<< Updated upstream
       ticks: 637401770561897430
     m_Hash: 3915115386
+=======
+      ticks: 637405214125851363
+    m_Hash: 2824578675
+>>>>>>> Stashed changes
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -25,7 +41,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.3.9
       source: 1
+<<<<<<< Updated upstream
       resolvedPath: C:\Users\ignol\Desktop\Game-Without-Title\Library\PackageCache\com.unity.collab-proxy@1.3.9
+=======
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.collab-proxy@1.3.9
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.collab-proxy
       name: com.unity.collab-proxy
       displayName: Unity Collaborate
@@ -84,7 +104,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.2.1
       source: 1
+<<<<<<< Updated upstream
       resolvedPath: C:\Users\ignol\Desktop\Game-Without-Title\Library\PackageCache\com.unity.ide.rider@1.2.1
+=======
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.ide.rider@1.2.1
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.ide.rider
       name: com.unity.ide.rider
       displayName: JetBrains Rider Editor
@@ -102,8 +126,30 @@ m_PackageAssets:
       versions:
         all:
         - 1.2.1
+<<<<<<< Updated upstream
+=======
+        - 2.0.0-preview
+        - 2.0.1
+        - 2.0.2
+        - 2.0.3
+        - 2.0.5
+        - 2.0.7
+        - 3.0.1
+        - 3.0.2
+>>>>>>> Stashed changes
         compatible:
         - 1.2.1
+<<<<<<< Updated upstream
+=======
+        - 2.0.0-preview
+        - 2.0.1
+        - 2.0.2
+        - 2.0.3
+        - 2.0.5
+        - 2.0.7
+        - 3.0.1
+        - 3.0.2
+>>>>>>> Stashed changes
         verified: 1.2.1
       dependencies:
       - name: com.unity.test-framework
@@ -143,7 +189,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 2.0.3
       source: 1
+<<<<<<< Updated upstream
       resolvedPath: C:\Users\ignol\Desktop\Game-Without-Title\Library\PackageCache\com.unity.ide.visualstudio@2.0.3
+=======
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.ide.visualstudio@2.0.3
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.ide.visualstudio
       name: com.unity.ide.visualstudio
       displayName: Visual Studio Editor
@@ -161,9 +211,11 @@ m_PackageAssets:
       versions:
         all:
         - 2.0.3
+        - 2.0.5
         compatible:
         - 2.0.3
-        verified: 2.0.3
+        - 2.0.5
+        verified: 2.0.5
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -179,7 +231,7 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637359495930000000
       documentationUrl: 
       hasRepository: 1
       repository:
@@ -192,7 +244,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.2.2
       source: 1
+<<<<<<< Updated upstream
       resolvedPath: C:\Users\ignol\Desktop\Game-Without-Title\Library\PackageCache\com.unity.ide.vscode@1.2.2
+=======
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.ide.vscode@1.2.2
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.ide.vscode
       name: com.unity.ide.vscode
       displayName: Visual Studio Code Editor
@@ -210,9 +266,11 @@ m_PackageAssets:
       versions:
         all:
         - 1.2.2
+        - 1.2.3
         compatible:
         - 1.2.2
-        verified: 1.2.2
+        - 1.2.3
+        verified: 1.2.3
       dependencies: []
       resolvedDependencies: []
       keywords: []
@@ -236,12 +294,221 @@ m_PackageAssets:
         url: https://github.cds.internal.unity3d.com/unity/com.unity.ide.vscode.git
         revision: d4564dab663617ea31f5782b365961d5304bed3c
         path: 
+    - packageId: com.unity.probuilder@4.4.0
+      testable: 0
+      isDirectDependency: 1
+      version: 4.4.0
+      source: 1
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.probuilder@4.4.0
+      assetPath: Packages/com.unity.probuilder
+      name: com.unity.probuilder
+      displayName: ProBuilder
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: 'Build, edit, and texture custom geometry in Unity. Use ProBuilder
+        for in-scene level design, prototyping, collision meshes, all with on-the-fly
+        play-testing.
+
+
+        Advanced features include UV editing, vertex colors,
+        parametric shapes, and texture blending. With ProBuilder''s model export
+        feature it''s easy to tweak your levels in any external 3D modelling suite.'
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 3.0.0
+        - 3.0.1
+        - 3.0.2
+        - 3.0.3
+        - 3.0.6
+        - 3.0.8
+        - 3.0.9
+        - 3.10.1
+        - 4.0.2
+        - 4.0.3
+        - 4.0.4
+        - 4.0.5
+        - 4.1.0
+        - 4.1.2
+        - 4.2.1
+        - 4.2.2-preview.1
+        - 4.2.2-preview.2
+        - 4.2.3
+        - 4.2.4-preview.0
+        - 4.3.0-preview.0
+        - 4.3.0-preview.1
+        - 4.3.0-preview.2
+        - 4.3.0-preview.4
+        - 4.3.0-preview.6
+        - 4.3.0-preview.7
+        - 4.3.0-preview.8
+        - 4.3.0-preview.9
+        - 4.3.1
+        - 4.4.0-preview.1
+        - 4.4.0
+        compatible:
+        - 4.0.2
+        - 4.0.3
+        - 4.0.4
+        - 4.0.5
+        - 4.1.0
+        - 4.1.2
+        - 4.2.1
+        - 4.2.2-preview.1
+        - 4.2.2-preview.2
+        - 4.2.3
+        - 4.2.4-preview.0
+        - 4.3.0-preview.0
+        - 4.3.0-preview.1
+        - 4.3.0-preview.2
+        - 4.3.0-preview.4
+        - 4.3.0-preview.6
+        - 4.3.0-preview.7
+        - 4.3.0-preview.8
+        - 4.3.0-preview.9
+        - 4.3.1
+        - 4.4.0-preview.1
+        - 4.4.0
+        verified: 4.4.0
+      dependencies:
+      - name: com.unity.settings-manager
+        version: 1.0.3
+      resolvedDependencies:
+      - name: com.unity.settings-manager
+        version: 1.0.3
+      keywords:
+      - 3d
+      - model
+      - mesh
+      - modeling
+      - geometry
+      - shape
+      - cube
+      - blender
+      - max
+      - maya
+      - fbx
+      - obj
+      - level
+      - design
+      - block
+      - greybox
+      - graybox
+      - whitebox
+      - prototype
+      - probuilder
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637334581170000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/com.unity.probuilder.git
+        revision: 04b57a20391934bc7460d5fe1017d157545b2a5f
+        path: 
+    - packageId: com.unity.progrids@3.0.3-preview.6
+      testable: 0
+      isDirectDependency: 1
+      version: 3.0.3-preview.6
+      source: 1
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.progrids@3.0.3-preview.6
+      assetPath: Packages/com.unity.progrids
+      name: com.unity.progrids
+      displayName: ProGrids
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: 'Advanced grid and object snapping for the scene view. ProGrids
+        is a dynamically placed grid, available on all 3 axes and at any position
+        in the scene.
+
+
+        ProGrids snaps objects in world space, ensuring consistent
+        placement of objects in your level.
+
+
+        In addition, ProGrids is completely
+        customizable. Change the colors of your grid, the snap sizing, unit of measurement,
+        and more!'
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 3.0.1-preview
+        - 3.0.2-preview
+        - 3.0.3-preview.0
+        - 3.0.3-preview.4
+        - 3.0.3-preview.5
+        - 3.0.3-preview.6
+        compatible:
+        - 3.0.1-preview
+        - 3.0.2-preview
+        - 3.0.3-preview.0
+        - 3.0.3-preview.4
+        - 3.0.3-preview.5
+        - 3.0.3-preview.6
+        verified: 
+      dependencies:
+      - name: com.unity.settings-manager
+        version: 1.0.2
+      resolvedDependencies:
+      - name: com.unity.settings-manager
+        version: 1.0.3
+      keywords:
+      - grid
+      - snap
+      - manipulation
+      - array
+      - align
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637209307060000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/com.unity.progrids.git
+        revision: 381f2b0b5dda11525d53e2c608284a3f68d1beff
+        path: 
     - packageId: com.unity.test-framework@1.1.18
       testable: 0
       isDirectDependency: 1
       version: 1.1.18
       source: 1
+<<<<<<< Updated upstream
       resolvedPath: C:\Users\ignol\Desktop\Game-Without-Title\Library\PackageCache\com.unity.test-framework@1.1.18
+=======
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.test-framework@1.1.18
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.test-framework
       name: com.unity.test-framework
       displayName: Test Framework
@@ -289,12 +556,12 @@ m_PackageAssets:
       entitlements:
         isAllowed: 1
       isAssetStorePackage: 0
-      datePublishedTicks: 0
+      datePublishedTicks: 637378481950000000
       documentationUrl: 
       hasRepository: 1
       repository:
         type: git
-        url: https://github.com/Unity-Technologies/com.unity.test-framework.git
+        url: git+https://github.com/Unity-Technologies/com.unity.test-framework.git
         revision: 14025b364215f4465cbe1beb7a81e486b2687ced
         path: 
     - packageId: com.unity.textmeshpro@3.0.1
@@ -302,7 +569,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 3.0.1
       source: 1
+<<<<<<< Updated upstream
       resolvedPath: C:\Users\ignol\Desktop\Game-Without-Title\Library\PackageCache\com.unity.textmeshpro@3.0.1
+=======
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.textmeshpro@3.0.1
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.textmeshpro
       name: com.unity.textmeshpro
       displayName: TextMeshPro
@@ -337,10 +608,80 @@ m_PackageAssets:
       errors: []
       versions:
         all:
+<<<<<<< Updated upstream
+=======
+        - 0.1.2
+        - 1.0.21
+        - 1.0.23
+        - 1.0.25
+        - 1.0.26
+        - 1.1.0
+        - 1.2.0
+        - 1.2.1
+        - 1.2.2
+        - 1.2.3
+        - 1.2.4
+        - 1.3.0-preview
+        - 1.3.0
+        - 1.4.0-preview.1b
+        - 1.4.0-preview.2a
+        - 1.4.0-preview.3a
+        - 1.4.0
+        - 1.4.1-preview.1
+        - 1.4.1
+        - 1.5.0-preview.1
+        - 1.5.0-preview.2
+        - 1.5.0-preview.3
+        - 1.5.0-preview.4
+        - 1.5.0-preview.5
+        - 1.5.0-preview.6
+        - 1.5.0-preview.7
+        - 1.5.0-preview.8
+        - 1.5.0-preview.10
+        - 1.5.0-preview.11
+        - 1.5.0-preview.12
+        - 1.5.0-preview.13
+        - 1.5.0-preview.14
+        - 1.5.0
+        - 1.5.1
+        - 1.5.3
+        - 2.0.0
+        - 2.0.1-preview.1
+        - 2.0.1
+        - 2.1.0-preview.1
+        - 2.1.0-preview.2
+        - 2.1.0-preview.3
+        - 2.1.0-preview.4
+        - 2.1.0-preview.5
+        - 2.1.0-preview.7
+        - 2.1.0-preview.8
+        - 2.1.0-preview.10
+        - 2.1.0-preview.11
+        - 2.1.0-preview.12
+        - 2.1.0-preview.13
+        - 2.1.0-preview.14
+        - 2.1.0
+        - 2.1.1
+        - 2.1.3
+        - 3.0.0-preview.1
+        - 3.0.0-preview.3
+        - 3.0.0-preview.4
+        - 3.0.0-preview.5
+        - 3.0.0-preview.7
+        - 3.0.0-preview.8
+        - 3.0.0-preview.10
+        - 3.0.0-preview.11
+        - 3.0.0-preview.12
+        - 3.0.0-preview.13
+        - 3.0.0-preview.14
+        - 3.0.0
+>>>>>>> Stashed changes
         - 3.0.1
+        - 3.0.3
         compatible:
         - 3.0.1
-        verified: 3.0.1
+        - 3.0.3
+        verified: 3.0.3
       dependencies:
       - name: com.unity.ugui
         version: 1.0.0
@@ -382,7 +723,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.2.14
       source: 1
+<<<<<<< Updated upstream
       resolvedPath: C:\Users\ignol\Desktop\Game-Without-Title\Library\PackageCache\com.unity.timeline@1.2.14
+=======
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.timeline@1.2.14
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.timeline
       name: com.unity.timeline
       displayName: Timeline
@@ -521,7 +866,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.ugui
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.ugui
       name: com.unity.ugui
       displayName: Unity UI
@@ -584,7 +933,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.ai
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.ai
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.ai
       name: com.unity.modules.ai
       displayName: AI
@@ -632,7 +985,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.androidjni
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.androidjni
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.androidjni
       name: com.unity.modules.androidjni
       displayName: Android JNI
@@ -680,7 +1037,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.animation
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.animation
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.animation
       name: com.unity.modules.animation
       displayName: Animation
@@ -728,7 +1089,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.assetbundle
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.assetbundle
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.assetbundle
       name: com.unity.modules.assetbundle
       displayName: Asset Bundle
@@ -776,7 +1141,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.audio
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.audio
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.audio
       name: com.unity.modules.audio
       displayName: Audio
@@ -824,7 +1193,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.cloth
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.cloth
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.cloth
       name: com.unity.modules.cloth
       displayName: Cloth
@@ -876,7 +1249,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.director
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.director
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.director
       name: com.unity.modules.director
       displayName: Director
@@ -932,7 +1309,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.imageconversion
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.imageconversion
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.imageconversion
       name: com.unity.modules.imageconversion
       displayName: Image Conversion
@@ -981,7 +1362,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.imgui
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.imgui
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.imgui
       name: com.unity.modules.imgui
       displayName: IMGUI
@@ -1029,7 +1414,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.jsonserialize
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.jsonserialize
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.jsonserialize
       name: com.unity.modules.jsonserialize
       displayName: JSONSerialize
@@ -1077,7 +1466,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.particlesystem
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.particlesystem
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.particlesystem
       name: com.unity.modules.particlesystem
       displayName: Particle System
@@ -1125,7 +1518,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.physics
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.physics
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.physics
       name: com.unity.modules.physics
       displayName: Physics
@@ -1173,7 +1570,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.physics2d
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.physics2d
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.physics2d
       name: com.unity.modules.physics2d
       displayName: Physics 2D
@@ -1221,7 +1622,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.screencapture
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.screencapture
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.screencapture
       name: com.unity.modules.screencapture
       displayName: Screen Capture
@@ -1273,7 +1678,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.terrain
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.terrain
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.terrain
       name: com.unity.modules.terrain
       displayName: Terrain
@@ -1321,7 +1730,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.terrainphysics
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.terrainphysics
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.terrainphysics
       name: com.unity.modules.terrainphysics
       displayName: Terrain Physics
@@ -1377,7 +1790,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.tilemap
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.tilemap
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.tilemap
       name: com.unity.modules.tilemap
       displayName: Tilemap
@@ -1429,7 +1846,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.ui
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.ui
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.ui
       name: com.unity.modules.ui
       displayName: UI
@@ -1477,7 +1898,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.uielements
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.uielements
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.uielements
       name: com.unity.modules.uielements
       displayName: UIElements
@@ -1541,7 +1966,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.umbra
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.umbra
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.umbra
       name: com.unity.modules.umbra
       displayName: Umbra
@@ -1589,7 +2018,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unityanalytics
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unityanalytics
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.unityanalytics
       name: com.unity.modules.unityanalytics
       displayName: Unity Analytics
@@ -1645,7 +2078,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequest
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequest
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.unitywebrequest
       name: com.unity.modules.unitywebrequest
       displayName: Unity Web Request
@@ -1693,7 +2130,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequestassetbundle
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequestassetbundle
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.unitywebrequestassetbundle
       name: com.unity.modules.unitywebrequestassetbundle
       displayName: Unity Web Request Asset Bundle
@@ -1749,7 +2190,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequestaudio
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequestaudio
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.unitywebrequestaudio
       name: com.unity.modules.unitywebrequestaudio
       displayName: Unity Web Request Audio
@@ -1805,7 +2250,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequesttexture
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequesttexture
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.unitywebrequesttexture
       name: com.unity.modules.unitywebrequesttexture
       displayName: Unity Web Request Texture
@@ -1861,7 +2310,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequestwww
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.unitywebrequestwww
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.unitywebrequestwww
       name: com.unity.modules.unitywebrequestwww
       displayName: Unity Web Request WWW
@@ -1933,7 +2386,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.vehicles
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.vehicles
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.vehicles
       name: com.unity.modules.vehicles
       displayName: Vehicles
@@ -1985,7 +2442,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.video
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.video
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.video
       name: com.unity.modules.video
       displayName: Video
@@ -2045,7 +2506,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.vr
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.vr
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.vr
       name: com.unity.modules.vr
       displayName: VR
@@ -2107,7 +2572,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.wind
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.wind
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.wind
       name: com.unity.modules.wind
       displayName: Wind
@@ -2155,7 +2624,11 @@ m_PackageAssets:
       isDirectDependency: 1
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.xr
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.xr
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.xr
       name: com.unity.modules.xr
       displayName: XR
@@ -2215,7 +2688,11 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.subsystems
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.subsystems
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.subsystems
       name: com.unity.modules.subsystems
       displayName: Subsystems
@@ -2267,7 +2744,11 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.0
       source: 2
+<<<<<<< Updated upstream
       resolvedPath: C:\Program Files\Unity\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.uielementsnative
+=======
+      resolvedPath: C:\Program Files\Unity\Hub\Editor\2020.1.12f1\Editor\Data\Resources\PackageManager\BuiltInPackages\com.unity.modules.uielementsnative
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.modules.uielementsnative
       name: com.unity.modules.uielementsnative
       displayName: UIElements Native
@@ -2326,7 +2807,11 @@ m_PackageAssets:
       isDirectDependency: 0
       version: 1.0.0
       source: 1
+<<<<<<< Updated upstream
       resolvedPath: C:\Users\ignol\Desktop\Game-Without-Title\Library\PackageCache\com.unity.ext.nunit@1.0.0
+=======
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.ext.nunit@1.0.0
+>>>>>>> Stashed changes
       assetPath: Packages/com.unity.ext.nunit
       name: com.unity.ext.nunit
       displayName: Custom NUnit
@@ -2372,7 +2857,69 @@ m_PackageAssets:
         url: git@gitlab.cds.internal.unity3d.com/upm-packages/core/com.unity.ext.nunit.git
         revision: c8f5044ffe6adb909f9836160b0bdaa30f2d1ec9
         path: 
+    - packageId: com.unity.settings-manager@1.0.3
+      testable: 0
+      isDirectDependency: 0
+      version: 1.0.3
+      source: 1
+      resolvedPath: D:\Admin\STUDIA\SEM5\Podstawy gier komputerowych\Game-Without-Title\Library\PackageCache\com.unity.settings-manager@1.0.3
+      assetPath: Packages/com.unity.settings-manager
+      name: com.unity.settings-manager
+      displayName: Settings Manager
+      author:
+        name: 
+        email: 
+        url: 
+      category: 
+      type: 
+      description: A framework for making any serializable field a setting, complete
+        with a pre-built settings interface.
+      status: 4
+      errors: []
+      versions:
+        all:
+        - 0.1.0-preview.4
+        - 0.1.0-preview.8
+        - 1.0.0
+        - 1.0.1
+        - 1.0.2
+        - 1.0.3
+        compatible:
+        - 0.1.0-preview.4
+        - 0.1.0-preview.8
+        - 1.0.0
+        - 1.0.1
+        - 1.0.2
+        - 1.0.3
+        verified: 1.0.3
+      dependencies: []
+      resolvedDependencies: []
+      keywords: []
+      registry:
+        id: main
+        name: 
+        url: https://packages.unity.com
+        scopes: []
+        isDefault: 1
+        capabilities: 7
+      hasRegistry: 1
+      hideInEditor: 1
+      entitlements:
+        isAllowed: 1
+      isAssetStorePackage: 0
+      datePublishedTicks: 637300096300000000
+      documentationUrl: 
+      hasRepository: 1
+      repository:
+        type: git
+        url: git+https://github.com/Unity-Technologies/com.unity.settings-manager.git
+        revision: 473664ccba1496294b741cf169740a5d54b3d0b6
+        path: 
   m_LocalPackages:
     m_LocalFileStatus: []
+<<<<<<< Updated upstream
 m_ProjectPath: C:/Users/ignol/Desktop/Game-Without-Title/Packages
+=======
+m_ProjectPath: D:/Admin/STUDIA/SEM5/Podstawy gier komputerowych/Game-Without-Title/Packages
+>>>>>>> Stashed changes
 m_EditorVersion: 2020.1.12f1 (55b56f0a86e3)
