@@ -23,6 +23,11 @@ public class DestroyBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.tag == "Enemy")
+        {
+            Debug.Log(collision.transform.name);
+            Destroy(collision.gameObject);
+        }
         Destroy(gameObject);
     }
 }

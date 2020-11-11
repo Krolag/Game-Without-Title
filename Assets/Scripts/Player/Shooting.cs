@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Shooting : MonoBehaviour
 {
     public Transform SpawnPoint;
     public GameObject Bullet;
+    public ParticleSystem Flash;
 
     //Predkosc kul
     public float BulletSpeed = 20f;
@@ -30,8 +32,11 @@ public class Shooting : MonoBehaviour
         if(Input.GetMouseButtonDown(0)) 
             Shot();
         else if (Input.GetMouseButtonUp(0))
+        {
             transform.rotation = IdleRotation.rotation;
-        
+            Flash.Stop();
+        }
+
         if(Input.GetMouseButtonDown(1) && !isAiming)
             Aim();
         else if(Input.GetMouseButtonUp(1) && isAiming)
@@ -40,6 +45,7 @@ public class Shooting : MonoBehaviour
 
     private void Shot()
     {
+        Flash.Play();
         //Tworzenie kuli
         GameObject bullet = Instantiate(Bullet, SpawnPoint.position, Bullet.transform.rotation);
         Rigidbody rig = bullet.GetComponent<Rigidbody>();
