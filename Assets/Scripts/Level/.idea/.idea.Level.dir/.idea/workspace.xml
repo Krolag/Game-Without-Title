@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="41c57150-ddcc-47e5-8209-ae291bb2440f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Materials/levelDesignGrid_material_grey.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Materials/levelDesignGrid_material_grey.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Materials/windowFrame_material_grey.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Materials/windowFrame_material_grey.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Materials/windowGlass_material_blueTransparent.mat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Materials/windowGlass_material_blueTransparent.mat.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Library/StateCache/MainStageHierarchy/1c/1cf4f5c43179e73f48dc793958a9bb19.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../../Library/StateCache/SceneView/7e/7e2e0cc5a447b24f97adf164cb81a19f.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../.idea/.idea.Game-Without-Title/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../../.idea/.idea.Game-Without-Title/.idea/contentModel.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Assembly-CSharp.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Assembly-CSharp.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Scenes/DemoScenes/Level_Skubi.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../../Scenes/DemoScenes/Level_Skubi.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Game-Without-Title.sln" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Game-Without-Title.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/ArtifactDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/Artifacts/56/56ad6f2cc62c964baf8782650538831b" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/InspectorExpandedItems.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/PackageCache/com.unity.probuilder@4.4.0/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/PackageCache/com.unity.probuilder@4.4.0/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/PackageCache/com.unity.progrids@3.0.3-preview.6/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/PackageCache/com.unity.progrids@3.0.3-preview.6/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/PackageCache/com.unity.settings-manager@1.0.3/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/PackageCache/com.unity.settings-manager@1.0.3/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/PackageManager/ProjectCache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/PackageManager/ProjectCache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/PackageManager/ProjectCache.md5" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/PackageManager/ProjectCache.md5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/SceneVisibilityState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/SceneVisibilityState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/SourceAssetDB" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/StateCache/MainStageHierarchy/4d/4d2a36d9faf65734f0bbefb3ee623532.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/StateCache/MainStageHierarchy/4d/4d2a36d9faf65734f0bbefb3ee623532.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/StateCache/SceneView/8c/8cd7c613bf844de3b80696e27a479d5e.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/StateCache/SceneView/8c/8cd7c613bf844de3b80696e27a479d5e.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/shadercompiler-UnityShaderCompiler.exe0.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/shadercompiler-UnityShaderCompiler.exe0.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/shadercompiler-UnityShaderCompiler.exe1.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/shadercompiler-UnityShaderCompiler.exe1.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/shadercompiler-UnityShaderCompiler.exe2.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/shadercompiler-UnityShaderCompiler.exe2.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../Library/shadercompiler-UnityShaderCompiler.exe3.log" beforeDir="false" afterPath="$PROJECT_DIR$/../../../Library/shadercompiler-UnityShaderCompiler.exe3.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/Packages/com.unity.probuilder/Settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/Packages/com.unity.probuilder/Settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/../../../ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../../../obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/TriggerDoorController.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/TriggerDoorController.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1k9VuaK0NqIW8d8hPkJL2NDBViJ" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="41c57150-ddcc-47e5-8209-ae291bb2440f" name="Default Changelist" comment="" />
+      <created>1605113025377</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605113025377</updated>
+      <workItem from="1605113030825" duration="55000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="null" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
