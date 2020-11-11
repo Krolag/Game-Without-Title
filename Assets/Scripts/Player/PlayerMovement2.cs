@@ -39,9 +39,6 @@ public class PlayerMovement2 : MonoBehaviour
     
     void Update()
     {
-        //Poruszanie sie w osiach XYZ
-        Move();
-        
         //Podskok
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -70,6 +67,8 @@ public class PlayerMovement2 : MonoBehaviour
             isCrouching = !isCrouching;
             Crouch();
         }
+        //Poruszanie sie w osiach XYZ
+        Move();
     }
 
     //===================Funkcje=====================//
@@ -77,9 +76,13 @@ public class PlayerMovement2 : MonoBehaviour
     {
         isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
 
-        if (isGrounded && velocity.y < 0)
+        if (isGrounded && velocity.y < 0 && controller.height == OriginalHeight)
         {
-            velocity.y = -700f;
+            velocity.y = -2f;
+        }
+        else if (isGrounded && controller.height == ReducedHeight)
+        {
+            velocity.y = -20f;
         }
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
@@ -106,7 +109,19 @@ public class PlayerMovement2 : MonoBehaviour
     
     private void Jump()
     {
-        velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+        if (isCrouching)
+        {
+            isCrouching = !isCrouching;
+            controller.height = OriginalHeight;
+            
+            //Gdy kucamy mamy mozliwosc wyzszego skoku
+            JumpHeight *= 1.3f;
+            velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+            JumpHeight /= 1.3f;
+            Speed = WalkSpeed;
+        }
+        else
+            velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
     }
     
     private void Crouch()
