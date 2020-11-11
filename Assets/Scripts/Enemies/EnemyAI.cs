@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     [Header("Initialize enemy")]
     public NavMeshAgent Agent;
     public Transform Player;
-    public LayerMask WhatIsGround, WhatisPlayer;
+    public LayerMask WhatIsGround, WhatIsPlayer;
     
     [Header("Patroling variables")]
     public Vector3 WalkPoint;
@@ -29,15 +29,18 @@ public class EnemyAI : MonoBehaviour
     private void Update()
     {
         // Check for sight and attack range
-        PlayerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatisPlayer);
-        PlayerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatisPlayer);
-        
-        if (!PlayerInSightRange && !PlayerInAttackRange)
-            Patrol();
-        if (PlayerInSightRange && !PlayerInAttackRange)
-            Chase();
-        if (PlayerInSightRange && PlayerInAttackRange)
-            Attack();
+        PlayerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
+        PlayerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
+
+        if (PlayerMovement2.IsPlayerInMove)
+        {
+            if (!PlayerInSightRange && !PlayerInAttackRange)
+                Patrol();
+            if (PlayerInSightRange && !PlayerInAttackRange)
+                Chase();
+            if (PlayerInSightRange && PlayerInAttackRange)
+                Attack();
+        }
     }
 
     private void Patrol()
@@ -77,7 +80,5 @@ public class EnemyAI : MonoBehaviour
         // Make sure enemy doesn't move
         Agent.SetDestination(transform.position);
         transform.LookAt(Player);
-        
-        Debug.Log("Kill Player");
     }
 }

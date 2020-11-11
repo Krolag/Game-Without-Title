@@ -5,41 +5,50 @@ using UnityEngine;
 public class PlayerMovement2 : MonoBehaviour
 {
     public CharacterController controller;
-    Vector3 velocity;
+    private Vector3 velocity;
     
-    //Zmienne okreslajace kolejno: aktualna predkosc gracza, sile grawitacji, wysokosc skoku
+    // Zmienne okreslajace kolejno: aktualna predkosc gracza, sile grawitacji, wysokosc skoku
     public float Speed = 8f;
     public float Gravity = -9.81f;
     public float JumpHeight = 3f;
         
-    //Zmienne sluzace do zbadaniac czy gracz jest w powietrzu czy na ziemmi
+    // Zmienne sluzace do zbadania czy gracz jest w powietrzu czy na ziemi
     public Transform GroundCheck;
     public float GroundDistance = 0.4f;
     public LayerMask GroundMask;
-    bool isGrounded;
+    private bool isGrounded;
 
-    //Zmienne sprawdzajace stan gracza
+    // Zmienne sprawdzajace stan gracza
     private bool isSprinting = false;
     private bool isCrouching = false;
     
-    //Zmienne opisujace predkosc w zaleznosci od stanu w jakim znajduje sie gracz
+    // Zmienne opisujace predkosc w zaleznosci od stanu w jakim znajduje sie gracz
     public float SprintSpeed = 12f;
     public float WalkSpeed = 8f;
     public float CrouchSpeed = 5f;
     
-    //Wysokosc gracza na stojaco / w przykucu
+    // Wysokosc gracza na stojaco / w przykucu
     public float OriginalHeight;
     public float ReducedHeight;
     
+    // Zmienna zapisujaca ruch gracza
+    public static bool IsPlayerInMove = false;
+    private Vector3 currentPosition;
+    
+    // TO DO:
+    // Zmienic metode Start na Awake, poczytaj czym sie roznia i co w ktorej lepiej robic
     void Start()
     {
-        Speed = WalkSpeed; //Inicjacja predkosci poczatkowej
-        OriginalHeight = controller.height; //Inicjacja wysokosci poczatkowej
+        Speed = WalkSpeed; // Inicjacja predkosci poczatkowej
+        OriginalHeight = controller.height; // Inicjacja wysokosci poczatkowej
     }
     
-    void Update()
+    private void Update()
     {
-        //Podskok
+        // Zbierz obecna pozycje gracza
+        currentPosition = this.transform.position;
+        
+        // Podskok
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
@@ -48,7 +57,7 @@ public class PlayerMovement2 : MonoBehaviour
 
         controller.Move(velocity * Time.deltaTime);
         
-        //Sprint/chodzenie
+        // Sprint/chodzenie
         if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == false) 
         { 
             isSprinting = !isSprinting;
@@ -61,16 +70,21 @@ public class PlayerMovement2 : MonoBehaviour
             Walk();
         }
         
-        //Skradanie
+        // Skradanie
         if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
         {
             isCrouching = !isCrouching;
             Crouch();
         }
-        //Poruszanie sie w osiach XYZ
+        // Poruszanie sie w osiach XYZ
         Move();
+        
+        // Sprawdz, czy gracz sie poruszyl w tej iteracji
+        CheckForMovement();
     }
 
+    // TO DO:
+    // Nie pisz pustych komentarzy jak ten w 88 linii
     //===================Funkcje=====================//
     private void Move()
     {
@@ -84,12 +98,21 @@ public class PlayerMovement2 : MonoBehaviour
         {
             velocity.y = -20f;
         }
+        
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
         
-        Vector3 move = transform.right * x +transform.forward * z;
+        Vector3 move = transform.right * x + transform.forward * z;
 
-        controller.Move(move * Time.deltaTime * Speed); 
+        controller.Move(Time.deltaTime * Speed * move);
+    }
+
+    private void CheckForMovement()
+    {
+        if (this.transform.position != currentPosition)
+            IsPlayerInMove = true;
+        else
+            IsPlayerInMove = false;
     }
 
     private void Sprint()
@@ -114,7 +137,7 @@ public class PlayerMovement2 : MonoBehaviour
             isCrouching = !isCrouching;
             controller.height = OriginalHeight;
             
-            //Gdy kucamy mamy mozliwosc wyzszego skoku
+            // Gdy kucamy mamy mozliwosc wyzszego skoku
             JumpHeight *= 1.3f;
             velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
             JumpHeight /= 1.3f;
