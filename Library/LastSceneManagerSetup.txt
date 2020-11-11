@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/Movement_Ignacy.unity
+- path: Assets/Scenes/DemoScenes/Level_Skubi.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
