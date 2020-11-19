@@ -13,7 +13,7 @@ public class DestroyBullet : MonoBehaviour
     }
     void Update()
     {
-        //Jesli kula wyleci dalej niz ustalony zasieg, w osi X/Y/Z to zostaje zniszczona
+        // Jesli kula wyleci dalej niz ustalony zasieg, w osi X/Y/Z to zostaje zniszczona
         if (BulletPosition.position.x > Range || BulletPosition.position.x < -Range || BulletPosition.position.y > Range ||
             BulletPosition.position.y < -Range || BulletPosition.position.z > Range || BulletPosition.position.z < -Range)
         {
@@ -23,11 +23,6 @@ public class DestroyBullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == "Enemy")
-        {
-            Debug.Log(collision.transform.name);
-            Destroy(collision.gameObject);
-        }
         Destroy(gameObject);
     }
 }

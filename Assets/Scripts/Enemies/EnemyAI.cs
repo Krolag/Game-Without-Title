@@ -1,43 +1,78 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
-    [Header("Initialize enemy")]
-    public NavMeshAgent Agent;
+    [Header("Initialize enemy")] public NavMeshAgent Agent;
     public Transform Player;
     public LayerMask WhatIsGround, WhatIsPlayer;
-    
-    [Header("Patroling variables")]
-    public Vector3 WalkPoint;
+
+    [Header("Patroling variables")] public Vector3 WalkPoint;
     public float WalkPointRange;
     private bool walkPointSet;
+    private Vector3 playerPosition;
+    private Vector3 currentPosition;
 
-    [Header("States Variables")] 
-    public float SightRange, AttackRange;
-    public bool PlayerInSightRange, PlayerInAttackRange;
-
+    [Header("States Variables")] public float SightRange, AttackRange;
+    public bool PlayerInSightRange, PlayerInAttackRange = true;
+    public float FovAngle;
 
     private void Awake()
     {
         Player = GameObject.Find("Player").transform;
         Agent = GetComponent<NavMeshAgent>();
     }
-    
+
     private void Update()
     {
         // Check for sight and attack range
-        PlayerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
-        PlayerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
+        // Check for sight and attack range
+        RaycastHit hit;
 
-        if (PlayerMovement2.IsPlayerInMove)
+        float angle = FovAngle;
+        float step = (FovAngle * 2) / 30;
+        for (int i = 0; i < 30; i++)
+        {
+
+            Debug.DrawRay(transform.position,
+                transform.TransformDirection(Quaternion.AngleAxis(angle, transform.up) * transform.forward) *
+                SightRange, Color.red);
+
+            if (Physics.Raycast(transform.position,
+                transform.TransformDirection(Quaternion.AngleAxis(angle, transform.up) * transform.forward), out hit,
+                SightRange))
+            {
+                if (hit.collider.name == "Player")
+                    PlayerInSightRange = true;
+            }
+
+            angle -= step;
+
+        }
+
+        // PlayerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
+        // PlayerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
+        playerPosition = Player.position;
+
+        if (!PlayerMovement2.IsPlayerInMove)
+        {
+            Agent.velocity = Vector3.zero;
+            Agent.Stop();
+            Agent.enabled = false;
+            Agent.enabled = true;
+        }
+        else
         {
             if (!PlayerInSightRange && !PlayerInAttackRange)
                 Patrol();
-            if (PlayerInSightRange && !PlayerInAttackRange)
-                Chase();
+            // if (PlayerInSightRange && !PlayerInAttackRange)
+            //     Chase();
             if (PlayerInSightRange && PlayerInAttackRange)
                 Attack();
         }
@@ -48,14 +83,33 @@ public class EnemyAI : MonoBehaviour
         if (!walkPointSet)
             SearchWalkPoint();
 
-        if (walkPointSet)
+        if (walkPointSet && !PlayerMovement2.IsPlayerInMove)
+        {
+            Agent.velocity = Vector3.zero;
+            Agent.Stop();
+            Agent.enabled = false;
+            Agent.enabled = true;
+        }
+
+        if (walkPointSet && PlayerMovement2.IsPlayerInMove)
             Agent.SetDestination(WalkPoint);
 
         Vector3 distanceToWalkPoint = transform.position - WalkPoint;
-        
+
         // Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
+
+        StartCoroutine(CheckIfStuck());
+    }
+
+    IEnumerator CheckIfStuck()
+    {
+        currentPosition = transform.position;
+        yield return new WaitForSeconds(2);
+        // Debug.Log(Vector3.Distance(currentPosition, transform.position));
+        if (Vector3.Distance(currentPosition, transform.position) <= 0.1)
+           SearchWalkPoint();
     }
 
     private void SearchWalkPoint()
@@ -72,7 +126,15 @@ public class EnemyAI : MonoBehaviour
 
     private void Chase()
     {
-        Agent.SetDestination(Player.position);
+        if (PlayerMovement2.IsPlayerInMove)
+            Agent.SetDestination(playerPosition);
+        if (!PlayerMovement2.IsPlayerInMove)
+        {
+            Agent.velocity = Vector3.zero;
+            Agent.Stop();
+            Agent.enabled = false;
+            Agent.enabled = true;
+        }
     }
 
     private void Attack()
@@ -80,5 +142,12 @@ public class EnemyAI : MonoBehaviour
         // Make sure enemy doesn't move
         Agent.SetDestination(transform.position);
         transform.LookAt(Player);
+        SceneManager.LoadScene("Level_01", LoadSceneMode.Single);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.transform.CompareTag("Harmful"))
+            Destroy(this.gameObject);
     }
 }

@@ -5,19 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
   - Enemy
-=======
   - Door
->>>>>>> Stashed changes
-=======
-  - Door
->>>>>>> Stashed changes
-=======
-  - Door
->>>>>>> Stashed changes
+  - Harmful
   layers:
   - Default
   - TransparentFX
@@ -28,23 +18,8 @@ TagManager:
   - 
   - 
   - Ground
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
   - Player
-  - Enemy
-=======
-  - Trigger
   - 
->>>>>>> Stashed changes
-=======
-  - Trigger
-  - 
->>>>>>> Stashed changes
-=======
-  - Trigger
-  - 
->>>>>>> Stashed changes
   - 
   - 
   - 

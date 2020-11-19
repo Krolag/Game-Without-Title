@@ -1,33 +1,33 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class TriggerDoorController : MonoBehaviour
 {
-    public Animator myDoor = null;
+    public Animator DoorAnimator;
 
-    public bool doorTrigger = false;
-    public bool isDoorOpen = false;
-    
+    public bool IsDoorOpen;
+
+    private void Start()
+    {
+        DoorAnimator = GetComponent<Animator>();
+    }
+
     private void OnTriggerStay(Collider other)
-    { 
-        if (Input.GetKeyDown(KeyCode.E))
+    {
+        if (other.transform.CompareTag("Player") && Input.GetKeyDown(KeyCode.E))
         {
-            if (other.CompareTag("Player"))
+            if (!IsDoorOpen)
             {
-
-                if (doorTrigger)
-                {
-                    if (!isDoorOpen)
-                    {
-                        myDoor.Play("openDoor", 0, 0.0f);
-                        isDoorOpen = true;
-                    }
-                    else if (isDoorOpen)
-                    {
-                        myDoor.Play("closeDoor", 0, 0.0f);
-                        isDoorOpen = false;
-                    }
-                }
+                DoorAnimator.SetBool("OpenDoor", true);
+                DoorAnimator.SetBool("CloseDoor", false);
+                IsDoorOpen = true;
+            }
+            else
+            {
+                            DoorAnimator.SetBool("OpenDoor", false);
+                DoorAnimator.SetBool("CloseDoor", true);
+                IsDoorOpen = false;
             }
         }
     }
