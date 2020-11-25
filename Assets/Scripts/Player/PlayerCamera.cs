@@ -8,7 +8,7 @@ public class PlayerCamera : MonoBehaviour
     private float rotationX;
     float mouseSensitivity = 200f;
     public Transform player;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +24,13 @@ public class PlayerCamera : MonoBehaviour
         float mouseY = Input.GetAxis("Mouse Y") * Time.deltaTime * mouseSensitivity;
         float m_X = Input.GetAxis("Mouse X") * Time.deltaTime * mouseSensitivity;
         
+        
         //Rotate up and down
         rotationX -= mouseY;
         rotationX = Mathf.Clamp(rotationX, -90f, 90f);
         transform.localEulerAngles = new Vector3(rotationX, 0f, 0f);
         
-        //Rotate left and down
+        //Rotate left and right
         player.Rotate(Vector3.up* m_X);
 
     }
