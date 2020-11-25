@@ -6,12 +6,12 @@ public class PlayerMovement2 : MonoBehaviour
 {
     public CharacterController controller;
     private Vector3 velocity;
-    
+
     // Zmienne okreslajace kolejno: aktualna predkosc gracza, sile grawitacji, wysokosc skoku
     public float Speed = 8f;
     public float Gravity = -9.81f;
     public float JumpHeight = 3f;
-        
+
     // Zmienne sluzace do zbadania czy gracz jest w powietrzu czy na ziemi
     public Transform GroundCheck;
     public float GroundDistance = 0.4f;
@@ -21,20 +21,20 @@ public class PlayerMovement2 : MonoBehaviour
     // Zmienne sprawdzajace stan gracza
     private bool isSprinting = false;
     private bool isCrouching = false;
-    
+
     // Zmienne opisujace predkosc w zaleznosci od stanu w jakim znajduje sie gracz
     public float SprintSpeed = 12f;
     public float WalkSpeed = 8f;
     public float CrouchSpeed = 5f;
-    
+
     // Wysokosc gracza na stojaco / w przykucu
     public float OriginalHeight;
     public float ReducedHeight;
-    
+
     // Zmienna zapisujaca ruch gracza
     public static bool IsPlayerInMove = false;
     private Vector3 currentPosition;
-    
+
     // TO DO:
     // Zmienic metode Start na Awake, poczytaj czym sie roznia i co w ktorej lepiej robic
     void Start()
@@ -42,12 +42,12 @@ public class PlayerMovement2 : MonoBehaviour
         Speed = WalkSpeed; // Inicjacja predkosci poczatkowej
         OriginalHeight = controller.height; // Inicjacja wysokosci poczatkowej
     }
-    
+
     private void Update()
     {
         // Zbierz obecna pozycje gracza
         currentPosition = this.transform.position;
-        
+
         // Podskok
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -56,20 +56,20 @@ public class PlayerMovement2 : MonoBehaviour
         velocity.y += Gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-        
+
         // Sprint/chodzenie
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == false) 
-        { 
+        if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == false)
+        {
             isSprinting = !isSprinting;
             Sprint();
         }
-        
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == true) 
-        { 
+
+        else if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == true)
+        {
             isSprinting = !isSprinting;
             Walk();
         }
-        
+
         // Skradanie
         if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
         {
@@ -78,11 +78,14 @@ public class PlayerMovement2 : MonoBehaviour
         }
         // Poruszanie sie w osiach XYZ
         Move();
-        
+
         // Sprawdz, czy gracz sie poruszyl w tej iteracji
         CheckForMovement();
+
     }
 
+
+    //TODO jak piszecie TODO w komentarzu to piszcie razem to wtedy VS wylapuje to i latwiej znalezc (skrot klwaiszowy: ctrl + \ + t (ew. ctrl + /, ctrl + t))
     // TO DO:
     // Nie pisz pustych komentarzy jak ten w 88 linii
     //===================Funkcje=====================//
@@ -98,10 +101,10 @@ public class PlayerMovement2 : MonoBehaviour
         {
             velocity.y = -20f;
         }
-        
+
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
-        
+
         Vector3 move = transform.right * x + transform.forward * z;
 
         controller.Move(Time.deltaTime * Speed * move);
@@ -129,14 +132,14 @@ public class PlayerMovement2 : MonoBehaviour
     {
         Speed = WalkSpeed;
     }
-    
+
     private void Jump()
     {
         if (isCrouching)
         {
             isCrouching = !isCrouching;
             controller.height = OriginalHeight;
-            
+
             // Gdy kucamy mamy mozliwosc wyzszego skoku
             JumpHeight *= 1.3f;
             velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
@@ -146,7 +149,7 @@ public class PlayerMovement2 : MonoBehaviour
         else
             velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
     }
-    
+
     private void Crouch()
     {
         if (isCrouching == true)
@@ -162,5 +165,5 @@ public class PlayerMovement2 : MonoBehaviour
             Speed = WalkSpeed;
         }
     }
-    
+
 }
