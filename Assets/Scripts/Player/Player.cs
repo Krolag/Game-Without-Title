@@ -8,33 +8,6 @@ public class Player : MonoBehaviour
     [SerializeField] private Transform _throwingPosition;
     [SerializeField] private float _throwStrenght;
 
-    private void Awake()
-    {
-
-    }
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(1))
-        {
-            Throw();
-        }
-
-        //some test actions
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            Ray ray = new Ray(Camera.main.gameObject.transform.position, Camera.main.gameObject.transform.forward);
-            RaycastHit[] hits = Physics.RaycastAll(ray, 4f);
-
-            foreach (var hit in hits)
-            {
-                Interactable interactable;
-                if (hit.collider.TryGetComponent<Interactable>(out interactable))
-                {
-                    interactable.Interact(GetComponent<Player>());
-                }
-            }
-        }
-    }
     public void PickUp(Throwable throwObject)
     {
         if (throwObject == null)

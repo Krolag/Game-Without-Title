@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerMovement2 : MonoBehaviour
+public class PlayerMovement2 : MonoBehaviour, InputActionsMap.IPlayerActions
 {
     public CharacterController controller;
     private Vector3 velocity;
@@ -34,21 +35,24 @@ public class PlayerMovement2 : MonoBehaviour
     // Zmienna zapisujaca ruch gracza
     public static bool IsPlayerInMove = false;
     private Vector3 currentPosition;
-    
+
     //Zmienne do wslizgu
     public float dashSpeed;
     public float dashTime;
-    Vector3 move = Vector3.zero;    
+    Vector3 move = Vector3.zero;
 
-    
-    
+
+    private float x = 0f, z = 0f;
+
     // TO DO:
     // Zmienic metode Start na Awake, poczytaj czym sie roznia i co w ktorej lepiej robic
     void Start()
     {
+        InputManager.Instance.SetCallbacks(this);
+
         Speed = WalkSpeed; // Inicjacja predkosci poczatkowej
         OriginalHeight = controller.height; // Inicjacja wysokosci poczatkowej
-        
+
     }
 
     private void Update()
@@ -56,41 +60,17 @@ public class PlayerMovement2 : MonoBehaviour
         // Zbierz obecna pozycje gracza
         currentPosition = this.transform.position;
 
-        // Podskok
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Jump();
-        }
+
         velocity.y += Gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
-        
-        // Sprint
-        if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == false) 
-        { 
-            isSprinting = !isSprinting;
-            Sprint();
-        }
-        
-        //Chodzenie
-        else if (Input.GetKeyDown(KeyCode.LeftShift) && isSprinting == true) 
-        { 
-            isSprinting = !isSprinting;
-            Walk();
-        }
-        
-        else if (!IsPlayerInMove && !isCrouching)
+
+        if (!IsPlayerInMove && !isCrouching)
         {
             isSprinting = IsPlayerInMove;
             Walk();
         }
 
-        // Skradanie
-        if (Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
-        {
-            isCrouching = !isCrouching;
-            Crouch();
-        }
         // Poruszanie sie w osiach XYZ
         Move();
 
@@ -117,9 +97,9 @@ public class PlayerMovement2 : MonoBehaviour
             velocity.y = -20f;
         }
 
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
-        
+        //float x = Input.GetAxis("Horizontal");
+        //float z = Input.GetAxis("Vertical");
+
         move = transform.right * x + transform.forward * z;
 
         controller.Move(Time.deltaTime * Speed * move);
@@ -201,8 +181,82 @@ public class PlayerMovement2 : MonoBehaviour
         while (Time.time < startTime + dashTime)
         {
             controller.Move(transform.forward * dashSpeed * Time.deltaTime);
-            
+
             yield return null;
+        }
+    }
+
+    public void OnInteraction(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Ray ray = new Ray(Camera.main.gameObject.transform.position, Camera.main.gameObject.transform.forward);
+            RaycastHit[] hits = Physics.RaycastAll(ray, 4f);
+
+            foreach (var hit in hits)
+            {
+                Interactable interactable;
+                if (hit.collider.TryGetComponent<Interactable>(out interactable))
+                {
+                    interactable.Interact(GetComponent<Player>());
+                }
+            }
+        }
+    }
+
+    public void OnMovement(InputAction.CallbackContext context)
+    {
+        Vector2 movement = context.ReadValue<Vector2>();
+
+        x = movement.x;
+        z = movement.y;
+    }
+
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        // Skradanie
+        if (context.phase == InputActionPhase.Started)
+        {
+            isCrouching = !isCrouching;
+            Crouch();
+        }
+    }
+
+    public void OnThrow(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            GetComponent<Player>().Throw();
+        }
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        // Sprint
+        if (context.phase == InputActionPhase.Performed && isSprinting == false)
+        {
+            isSprinting = !isSprinting;
+            Sprint();
+        }
+        //Chodzenie
+        else if (context.phase == InputActionPhase.Performed && isSprinting == true)
+        {
+            isSprinting = !isSprinting;
+            Walk();
+        }
+        else if (!IsPlayerInMove && !isCrouching)
+        {
+            isSprinting = IsPlayerInMove;
+            Walk();
+        }
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        // Podskok
+        if (context.phase == InputActionPhase.Started && isGrounded)
+        {
+            Jump();
         }
     }
 }

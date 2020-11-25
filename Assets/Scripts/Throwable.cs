@@ -27,7 +27,6 @@ public class Throwable : MonoBehaviour
     
     public void PickUp(Player player)
     {
-        Debug.Log("Picking up " + gameObject.name);
         player.PickUp(this);
     }
 }
