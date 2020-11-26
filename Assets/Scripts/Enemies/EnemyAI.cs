@@ -9,19 +9,26 @@ using Random = UnityEngine.Random;
 
 public class EnemyAI : MonoBehaviour
 {
-    [Header("Initialize enemy")] public NavMeshAgent Agent;
+    [Header("Initialize enemy")] 
+    public NavMeshAgent Agent;
     public Transform Player;
     public LayerMask WhatIsGround, WhatIsPlayer;
 
-    [Header("Patroling variables")] public Vector3 WalkPoint;
+    [Header("Patroling variables")] 
+    public Vector3 WalkPoint;
     public float WalkPointRange;
     private bool walkPointSet;
     private Vector3 playerPosition;
     private Vector3 currentPosition;
 
-    [Header("States Variables")] public float SightRange, AttackRange;
-    public bool PlayerInSightRange, PlayerInAttackRange = true;
-    public float FovAngle;
+    [Header("States Variables")] 
+    public bool PlayerInSightRange;
+    public float SightRange;
+    public int RayCastsCount;
+    public float HeightMultiplier;
+    public float FieldOfView;
+    
+    
 
     private void Awake()
     {
@@ -31,33 +38,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        // Check for sight and attack range
-        // Check for sight and attack range
-        RaycastHit hit;
-
-        float angle = FovAngle;
-        float step = (FovAngle * 2) / 30;
-        for (int i = 0; i < 30; i++)
-        {
-
-            Debug.DrawRay(transform.position,
-                transform.TransformDirection(Quaternion.AngleAxis(angle, transform.up) * transform.forward) *
-                SightRange, Color.red);
-
-            if (Physics.Raycast(transform.position,
-                transform.TransformDirection(Quaternion.AngleAxis(angle, transform.up) * transform.forward), out hit,
-                SightRange))
-            {
-                if (hit.collider.name == "Player")
-                    PlayerInSightRange = true;
-            }
-
-            angle -= step;
-
-        }
-
-        // PlayerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
-        // PlayerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
+        Sight();
+        
         playerPosition = Player.position;
 
         if (!PlayerMovement2.IsPlayerInMove)
@@ -69,12 +51,32 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            if (!PlayerInSightRange && !PlayerInAttackRange)
+            if (!PlayerInSightRange)
                 Patrol();
-            // if (PlayerInSightRange && !PlayerInAttackRange)
-            //     Chase();
-            if (PlayerInSightRange && PlayerInAttackRange)
+            else
                 Attack();
+        }
+    }
+
+    private void Sight()
+    {
+        RaycastHit hit;
+
+        var origin = transform.position + Vector3.up * HeightMultiplier;
+        var direction = (transform.forward - transform.right).normalized;
+        var angleStep = Quaternion.AngleAxis(FieldOfView / RayCastsCount, Vector3.up);
+
+        for (int i = 0; i < RayCastsCount; i++)
+        {
+            Debug.DrawRay(origin, direction * SightRange, Color.red);
+
+            if (Physics.Raycast(origin, direction, out hit, SightRange))
+            {
+                if (hit.collider.name == "Player")
+                    PlayerInSightRange = true;
+            }
+
+            direction = angleStep * direction;
         }
     }
 
@@ -99,17 +101,6 @@ public class EnemyAI : MonoBehaviour
         // Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
-
-        StartCoroutine(CheckIfStuck());
-    }
-
-    IEnumerator CheckIfStuck()
-    {
-        currentPosition = transform.position;
-        yield return new WaitForSeconds(2);
-        // Debug.Log(Vector3.Distance(currentPosition, transform.position));
-        if (Vector3.Distance(currentPosition, transform.position) <= 0.1)
-           SearchWalkPoint();
     }
 
     private void SearchWalkPoint()

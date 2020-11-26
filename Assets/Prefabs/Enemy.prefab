@@ -175,10 +175,11 @@ MonoBehaviour:
     m_Bits: 512
   WalkPoint: {x: 0, y: 0, z: 0}
   WalkPointRange: 8
-  SightRange: 5
-  AttackRange: 2
   PlayerInSightRange: 0
-  PlayerInAttackRange: 0
+  SightRange: 30
+  RayCastsCount: 30
+  HeightMultiplier: 1.15
+  FieldOfView: 100
 --- !u!136 &6074665190471671322
 CapsuleCollider:
   m_ObjectHideFlags: 0
