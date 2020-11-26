@@ -27,8 +27,6 @@ public class EnemyAI : MonoBehaviour
     public int RayCastsCount;
     public float HeightMultiplier;
     public float FieldOfView;
-    
-    
 
     private void Awake()
     {
@@ -142,6 +140,7 @@ public class EnemyAI : MonoBehaviour
         {
             Destroy(this.gameObject);
             Destroy(other.gameObject);
+            temporary.EnemiesLeft--;
         }
     }
 }
