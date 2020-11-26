@@ -139,6 +139,9 @@ public class EnemyAI : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Harmful"))
+        {
             Destroy(this.gameObject);
+            Destroy(other.gameObject);
+        }
     }
 }
