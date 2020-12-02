@@ -7,21 +7,22 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Killable))]
 public class EnemyAI : MonoBehaviour
 {
-    [Header("Initialize enemy")] 
+    [Header("Initialize enemy")]
     public NavMeshAgent Agent;
     public Transform Player;
     public LayerMask WhatIsGround, WhatIsPlayer;
 
-    [Header("Patroling variables")] 
+    [Header("Patroling variables")]
     public Vector3 WalkPoint;
     public float WalkPointRange;
     private bool walkPointSet;
     private Vector3 playerPosition;
     private Vector3 currentPosition;
 
-    [Header("States Variables")] 
+    [Header("States Variables")]
     public bool PlayerInSightRange;
     public float SightRange;
     public int RayCastsCount;
@@ -30,14 +31,24 @@ public class EnemyAI : MonoBehaviour
 
     private void Awake()
     {
-        Player = GameObject.Find("Player").transform;
+        Player = GameObject.Find("Player").transform;//dont search by name 
         Agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void OnEnable()
+    {
+        GetComponent<Killable>().Death += OnDeath;
+    }
+
+    private void OnDisable()
+    {
+        GetComponent<Killable>().Death -= OnDeath;
     }
 
     private void Update()
     {
         Sight();
-        
+
         playerPosition = Player.position;
 
         if (!PlayerMovement2.IsPlayerInMove)
@@ -70,7 +81,7 @@ public class EnemyAI : MonoBehaviour
 
             if (Physics.Raycast(origin, direction, out hit, SightRange))
             {
-                if (hit.collider.name == "Player")
+                if (hit.collider.name == "Player") //dont search gameobjects by name
                     PlayerInSightRange = true;
             }
 
@@ -106,7 +117,7 @@ public class EnemyAI : MonoBehaviour
         // Calculate random point in given range
         float randomZ = Random.Range(-WalkPointRange, WalkPointRange);
         float randomX = Random.Range(-WalkPointRange, WalkPointRange);
-        
+
         WalkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         if (Physics.Raycast(WalkPoint, -transform.up, 2f, WhatIsGround))
@@ -134,13 +145,17 @@ public class EnemyAI : MonoBehaviour
         SceneManager.LoadScene("Level_01", LoadSceneMode.Single);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnDeath()
+    {
+        Destroy(this.gameObject);
+        temporary.EnemiesLeft--;//xd
+
+    }
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Harmful"))
         {
-            Destroy(this.gameObject);
             Destroy(other.gameObject);
-            temporary.EnemiesLeft--;
         }
-    }
+    }*/
 }
