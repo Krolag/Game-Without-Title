@@ -18,13 +18,22 @@ public class InputManager : MonoBehaviour
             Destroy(this);
         else
             Instance = this;
-        _actions = new InputActionsMap();
-        _actions.Enable();
+        Initialize();
     }
 
     private void Start()
     {
         SwitchInputActions(InputActions.Player);
+    }
+
+    private void OnDestroy()
+    {
+        _actions.Dispose();
+    }
+    private void Initialize()
+    {
+        _actions = new InputActionsMap();
+        _actions.Enable();
     }
     /// <summary>
     /// Enable receiving callbacks from input system for instance

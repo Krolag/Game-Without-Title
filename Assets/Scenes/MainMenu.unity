@@ -353,14 +353,18 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Objectives:
 
-    - Find the ball
+    - Kill all enemies
 
     - Don''t let them notice you
 
     -
-    Find a way out
+    Find the orb
 
-    - I hear they only move when you move'
+
+
+
+
+    I hear they only move when you move...'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

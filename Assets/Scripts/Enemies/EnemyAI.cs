@@ -7,57 +7,48 @@ using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
+[RequireComponent(typeof(Killable))]
 public class EnemyAI : MonoBehaviour
 {
-    [Header("Initialize enemy")] public NavMeshAgent Agent;
+    [Header("Initialize enemy")]
+    public NavMeshAgent Agent;
     public Transform Player;
     public LayerMask WhatIsGround, WhatIsPlayer;
 
-    [Header("Patroling variables")] public Vector3 WalkPoint;
+    [Header("Patroling variables")]
+    public Vector3 WalkPoint;
     public float WalkPointRange;
     private bool walkPointSet;
     private Vector3 playerPosition;
     private Vector3 currentPosition;
 
-    [Header("States Variables")] public float SightRange, AttackRange;
-    public bool PlayerInSightRange, PlayerInAttackRange = true;
-    public float FovAngle;
+    [Header("States Variables")]
+    public bool PlayerInSightRange;
+    public float SightRange;
+    public int RayCastsCount;
+    public float HeightMultiplier;
+    public float FieldOfView;
 
     private void Awake()
     {
-        Player = GameObject.Find("Player").transform;
+        Player = GameObject.Find("Player").transform;//dont search by name 
         Agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void OnEnable()
+    {
+        GetComponent<Killable>().Death += OnDeath;
+    }
+
+    private void OnDisable()
+    {
+        GetComponent<Killable>().Death -= OnDeath;
     }
 
     private void Update()
     {
-        // Check for sight and attack range
-        // Check for sight and attack range
-        RaycastHit hit;
+        Sight();
 
-        float angle = FovAngle;
-        float step = (FovAngle * 2) / 30;
-        for (int i = 0; i < 30; i++)
-        {
-
-            Debug.DrawRay(transform.position,
-                transform.TransformDirection(Quaternion.AngleAxis(angle, transform.up) * transform.forward) *
-                SightRange, Color.red);
-
-            if (Physics.Raycast(transform.position,
-                transform.TransformDirection(Quaternion.AngleAxis(angle, transform.up) * transform.forward), out hit,
-                SightRange))
-            {
-                if (hit.collider.name == "Player")
-                    PlayerInSightRange = true;
-            }
-
-            angle -= step;
-
-        }
-
-        // PlayerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
-        // PlayerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
         playerPosition = Player.position;
 
         if (!PlayerMovement2.IsPlayerInMove)
@@ -69,12 +60,32 @@ public class EnemyAI : MonoBehaviour
         }
         else
         {
-            if (!PlayerInSightRange && !PlayerInAttackRange)
+            if (!PlayerInSightRange)
                 Patrol();
-            // if (PlayerInSightRange && !PlayerInAttackRange)
-            //     Chase();
-            if (PlayerInSightRange && PlayerInAttackRange)
+            else
                 Attack();
+        }
+    }
+
+    private void Sight()
+    {
+        RaycastHit hit;
+
+        var origin = transform.position + Vector3.up * HeightMultiplier;
+        var direction = (transform.forward - transform.right).normalized;
+        var angleStep = Quaternion.AngleAxis(FieldOfView / RayCastsCount, Vector3.up);
+
+        for (int i = 0; i < RayCastsCount; i++)
+        {
+            Debug.DrawRay(origin, direction * SightRange, Color.red);
+
+            if (Physics.Raycast(origin, direction, out hit, SightRange))
+            {
+                if (hit.collider.name == "Player") //dont search gameobjects by name
+                    PlayerInSightRange = true;
+            }
+
+            direction = angleStep * direction;
         }
     }
 
@@ -99,17 +110,6 @@ public class EnemyAI : MonoBehaviour
         // Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
-
-        StartCoroutine(CheckIfStuck());
-    }
-
-    IEnumerator CheckIfStuck()
-    {
-        currentPosition = transform.position;
-        yield return new WaitForSeconds(2);
-        // Debug.Log(Vector3.Distance(currentPosition, transform.position));
-        if (Vector3.Distance(currentPosition, transform.position) <= 0.1)
-           SearchWalkPoint();
     }
 
     private void SearchWalkPoint()
@@ -117,7 +117,7 @@ public class EnemyAI : MonoBehaviour
         // Calculate random point in given range
         float randomZ = Random.Range(-WalkPointRange, WalkPointRange);
         float randomX = Random.Range(-WalkPointRange, WalkPointRange);
-        
+
         WalkPoint = new Vector3(transform.position.x + randomX, transform.position.y, transform.position.z + randomZ);
 
         if (Physics.Raycast(WalkPoint, -transform.up, 2f, WhatIsGround))
@@ -145,9 +145,17 @@ public class EnemyAI : MonoBehaviour
         SceneManager.LoadScene("Level_01", LoadSceneMode.Single);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnDeath()
+    {
+        Destroy(this.gameObject);
+        temporary.EnemiesLeft--;//xd
+
+    }
+    /*private void OnTriggerEnter(Collider other)
     {
         if (other.transform.CompareTag("Harmful"))
-            Destroy(this.gameObject);
-    }
+        {
+            Destroy(other.gameObject);
+        }
+    }*/
 }

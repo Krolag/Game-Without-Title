@@ -5,6 +5,7 @@ public class Throwable : MonoBehaviour
 {
     private Rigidbody _rigidbody;
     private Interactable _interactable;
+    public ThrowableBehaviourObjectBase behaviour;
 
     private void Awake()
     {
@@ -28,5 +29,10 @@ public class Throwable : MonoBehaviour
     public void PickUp(Player player)
     {
         player.PickUp(this);
+    }
+    //lets try this, we need to specify when to trigger throwable behaviour
+    private void OnCollisionEnter(Collision collision)
+    {
+        behaviour?.Action(gameObject, collision);
     }
 }
