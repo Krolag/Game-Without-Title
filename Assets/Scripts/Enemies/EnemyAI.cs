@@ -32,6 +32,8 @@ public class EnemyAI : MonoBehaviour
     // Zmienne od Pana Ignacego
     public float Awareness = 0f; // Zmienna definiujaca to jak bardzo dany enemy jest "swiadomy" naszej obecnosci
     public float AwarenessTime = 5f;
+    public PlayerMovement2 PlayerObject;
+    
     //public int EnemyCounter;
     
     private void Awake()
@@ -101,7 +103,17 @@ public class EnemyAI : MonoBehaviour
     // }
     private void EnemyAwareness()
     {
-        Awareness += 40f * Time.deltaTime;
+        if (PlayerMovement2.isCrouching == true)
+        {
+            Awareness += 25f * Time.deltaTime;
+        }
+        else if (PlayerMovement2.isSprinting == true)
+        {
+            Awareness += 50f * Time.deltaTime;
+        }
+        else
+            Awareness += 40f * Time.deltaTime;
+        
         if (Awareness >= 30f)
         {
             SightRange = 40f;
@@ -124,7 +136,7 @@ public class EnemyAI : MonoBehaviour
         {
             Awareness = 100f;
             //Zabija nas dopiero wtedy gdy nas dogoni
-            if ((Agent.transform.position.x - Player.transform.position.x < 5.0f) && (Agent.transform.position.y - Player.transform.position.y < 5.0f) && (Agent.transform.position.z - Player.transform.position.z < 5.0f)) 
+            if ((Math.Abs(Agent.transform.position.x - Player.transform.position.x) < 5.0f) && (Math.Abs(Agent.transform.position.y - Player.transform.position.y) < 5.0f) && (Math.Abs(Agent.transform.position.z - Player.transform.position.z) < 5.0f)) 
             {
                 Attack();
             }

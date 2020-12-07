@@ -20,8 +20,8 @@ public class PlayerMovement2 : MonoBehaviour, InputActionsMap.IPlayerActions
     private bool isGrounded;
 
     // Zmienne sprawdzajace stan gracza
-    private bool isSprinting = false;
-    private bool isCrouching = false;
+    public static bool isSprinting = false;
+    public static bool isCrouching = false;
 
     // Zmienne opisujace predkosc w zaleznosci od stanu w jakim znajduje sie gracz
     public float SprintSpeed = 12f;
@@ -181,7 +181,9 @@ public class PlayerMovement2 : MonoBehaviour, InputActionsMap.IPlayerActions
         while (Time.time < startTime + dashTime)
         {
             controller.Move(transform.forward * dashSpeed * Time.deltaTime);
-
+            controller.height = ReducedHeight * 0.3f;
+            if (Time.time > startTime + dashTime - 0.05f)
+                controller.height = ReducedHeight;
             yield return null;
         }
     }
