@@ -29,6 +29,13 @@ public class EnemyAI : MonoBehaviour
     public float HeightMultiplier;
     public float FieldOfView;
 
+    // Zmienne od Pana Ignacego
+    public float Awareness = 0f; // Zmienna definiujaca to jak bardzo dany enemy jest "swiadomy" naszej obecnosci
+    public float AwarenessTime = 5f;
+    public PlayerMovement2 PlayerObject;
+    
+    //public int EnemyCounter;
+    
     private void Awake()
     {
         Player = GameObject.Find("Player").transform;//dont search by name 
@@ -61,12 +68,80 @@ public class EnemyAI : MonoBehaviour
         else
         {
             if (!PlayerInSightRange)
+            {
                 Patrol();
-            else
-                Attack();
+                if (Awareness > 20 && Awareness < 80)
+                {
+                    Awareness -= 1.5f * Time.deltaTime;
+                    if (Awareness < 25)
+                    {
+                        SightRange = 30f;
+                        RayCastsCount = 30;
+                    }
+                }
+            }
+            
+            else if (PlayerInSightRange) // Jesli przeciwnik raz nas zauwazy to caly czas nas widzi ??DLAczEEgooo?? ;_;
+            {
+                EnemyAwareness();
+                PlayerInSightRange = !PlayerInSightRange; // Tymczasowo
+            }
         }
     }
 
+    // private void AwarnessDecrease()
+    // { 
+    //     float startTime = Time.time;
+    //     while (Time.time < startTime + AwarenessTime + 1)
+    //         if (Time.time > startTime + AwarenessTime)
+    //         {
+    //             Awareness = 20f;
+    //             SightRange = 30f;
+    //             RayCastsCount = 30;
+    //             break;
+    //         }
+    // }
+    private void EnemyAwareness()
+    {
+        if (PlayerMovement2.isCrouching == true)
+        {
+            Awareness += 25f * Time.deltaTime;
+        }
+        else if (PlayerMovement2.isSprinting == true)
+        {
+            Awareness += 50f * Time.deltaTime;
+        }
+        else
+            Awareness += 40f * Time.deltaTime;
+        
+        if (Awareness >= 30f)
+        {
+            SightRange = 40f;
+            RayCastsCount = 40;
+            Patrol();
+        }
+        if (Awareness >= 50f)
+        {
+            Agent.speed = 6f;
+            Agent.acceleration = 10f;
+            Patrol();
+        }
+        if (Awareness >= 90f)
+        {
+            Agent.speed = 9f;
+            Agent.acceleration = 12f;
+            Chase();
+        }
+        if (Awareness >= 100f)
+        {
+            Awareness = 100f;
+            //Zabija nas dopiero wtedy gdy nas dogoni
+            if ((Math.Abs(Agent.transform.position.x - Player.transform.position.x) < 5.0f) && (Math.Abs(Agent.transform.position.y - Player.transform.position.y) < 5.0f) && (Math.Abs(Agent.transform.position.z - Player.transform.position.z) < 5.0f)) 
+            {
+                Attack();
+            }
+        }
+    }
     private void Sight()
     {
         RaycastHit hit;
@@ -82,7 +157,7 @@ public class EnemyAI : MonoBehaviour
             if (Physics.Raycast(origin, direction, out hit, SightRange))
             {
                 if (hit.collider.name == "Player") //dont search gameobjects by name
-                    PlayerInSightRange = true;
+                    PlayerInSightRange = true; // Tutaj jest ustawiana wartosc PlayerInSightRange na true, ale pozniej po "wyjsciu" nie jest cofana na false :<
             }
 
             direction = angleStep * direction;
