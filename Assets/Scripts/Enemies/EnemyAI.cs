@@ -34,12 +34,20 @@ public class EnemyAI : MonoBehaviour
     public float AwarenessTime = 5f;
     public PlayerMovement2 PlayerObject;
     
+    // Zmienne od Pana Jakuba
+    public AwarenessBar AwarenessBar;
+    
     //public int EnemyCounter;
     
     private void Awake()
     {
         Player = GameObject.Find("Player").transform;//dont search by name 
         Agent = GetComponent<NavMeshAgent>();
+    }
+
+    private void Start()
+    {
+        AwarenessBar.SetMaxAwareness(100);
     }
 
     private void OnEnable()
@@ -141,6 +149,7 @@ public class EnemyAI : MonoBehaviour
                 Attack();
             }
         }
+        AwarenessBar.setAwareness(Awareness);
     }
     private void Sight()
     {
