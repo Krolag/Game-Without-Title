@@ -505,6 +505,8 @@ GameObject:
   - component: {fileID: 6074665190471671322}
   - component: {fileID: -1127232152032399192}
   - component: {fileID: 2815764533172287377}
+  - component: {fileID: -3190012666318365833}
+  - component: {fileID: 7867143041348371079}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -558,7 +560,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3207133382335710251}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1928c0a8c8bf544db7ab9aa62a3979b, type: 3}
   m_Name: 
@@ -572,7 +574,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   WalkPoint: {x: 0, y: 0, z: 0}
-  WalkPointRange: 8
+  WalkPointRange: 50
   PlayerInSightRange: 0
   SightRange: 30
   RayCastsCount: 30
@@ -626,6 +628,48 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!95 &-3190012666318365833
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207133382335710251}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 146a32e87dd66dc419ae93eab3cef11b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7867143041348371079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207133382335710251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bb11cd51228375449ee4cf51e4929c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DestinationPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  WanderSpeed: 2
+  Acceleration: 5
+  FieldOfView: 120
+  SightRange: 30
+  RayCastCount: 30
 --- !u!1 &3207133383555116092
 GameObject:
   m_ObjectHideFlags: 0

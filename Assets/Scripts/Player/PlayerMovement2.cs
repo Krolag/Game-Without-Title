@@ -60,7 +60,6 @@ public class PlayerMovement2 : MonoBehaviour, InputActionsMap.IPlayerActions
         // Zbierz obecna pozycje gracza
         currentPosition = this.transform.position;
 
-
         velocity.y += Gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
@@ -78,12 +77,7 @@ public class PlayerMovement2 : MonoBehaviour, InputActionsMap.IPlayerActions
         CheckForMovement();
 
     }
-
-
-    //TODO jak piszecie TODO w komentarzu to piszcie razem to wtedy VS wylapuje to i latwiej znalezc (skrot klwaiszowy: ctrl + \ + t (ew. ctrl + /, ctrl + t))
-    // TO DO:
-    // Nie pisz pustych komentarzy jak ten w 88 linii
-    //===================Funkcje=====================//
+    
     private void Move()
     {
         isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
@@ -96,9 +90,6 @@ public class PlayerMovement2 : MonoBehaviour, InputActionsMap.IPlayerActions
         {
             velocity.y = -20f;
         }
-
-        //float x = Input.GetAxis("Horizontal");
-        //float z = Input.GetAxis("Vertical");
 
         move = transform.right * x + transform.forward * z;
 

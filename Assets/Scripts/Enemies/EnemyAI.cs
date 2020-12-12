@@ -19,7 +19,7 @@ public class EnemyAI : MonoBehaviour
     public Vector3 WalkPoint;
     public float WalkPointRange;
     private bool walkPointSet;
-    private Vector3 playerPosition;
+    // private Vector3 playerPosition;
     private Vector3 currentPosition;
 
     [Header("States Variables")]
@@ -39,11 +39,11 @@ public class EnemyAI : MonoBehaviour
     
     //public int EnemyCounter;
     
-    private void Awake()
-    {
-        Player = GameObject.Find("Player").transform;//dont search by name 
-        Agent = GetComponent<NavMeshAgent>();
-    }
+    // private void Awake()
+    // {
+    //     Player = GameObject.Find("Player").transform;//dont search by name 
+    //     Agent = GetComponent<NavMeshAgent>();
+    // }
 
     private void Start()
     {
@@ -62,22 +62,22 @@ public class EnemyAI : MonoBehaviour
 
     private void Update()
     {
-        Sight();
+        // Sight();
 
-        playerPosition = Player.position;
+        // playerPosition = Player.position;
 
-        if (!PlayerMovement2.IsPlayerInMove)
-        {
-            Agent.velocity = Vector3.zero;
-            Agent.Stop();
-            Agent.enabled = false;
-            Agent.enabled = true;
-        }
-        else
-        {
-            if (!PlayerInSightRange)
+        // if (!PlayerMovement2.IsPlayerInMove)
+        // {
+        //     Agent.velocity = Vector3.zero;
+        //     Agent.Stop();
+        //     Agent.enabled = false;
+        //     Agent.enabled = true;
+        // }
+        // else
+        // {
+            if (!PlayerInSightRange) // wander state
             {
-                Patrol();
+                // Patrol();
                 if (Awareness > 20 && Awareness < 80)
                 {
                     Awareness -= 1.5f * Time.deltaTime;
@@ -89,12 +89,13 @@ public class EnemyAI : MonoBehaviour
                 }
             }
             
-            else if (PlayerInSightRange) // Jesli przeciwnik raz nas zauwazy to caly czas nas widzi ??DLAczEEgooo?? ;_;
+            else if (PlayerInSightRange) // investigation state
+                // Jesli przeciwnik raz nas zauwazy to caly czas nas widzi ??DLAczEEgooo?? ;_;
             {
                 EnemyAwareness();
                 PlayerInSightRange = !PlayerInSightRange; // Tymczasowo
             }
-        }
+        // }
     }
 
     // private void AwarnessDecrease()
@@ -109,6 +110,7 @@ public class EnemyAI : MonoBehaviour
     //             break;
     //         }
     // }
+    
     private void EnemyAwareness()
     {
         if (PlayerMovement2.isCrouching == true)
@@ -126,13 +128,13 @@ public class EnemyAI : MonoBehaviour
         {
             SightRange = 40f;
             RayCastsCount = 40;
-            Patrol();
+            // Patrol();
         }
         if (Awareness >= 50f)
         {
             Agent.speed = 6f;
             Agent.acceleration = 10f;
-            Patrol();
+            // Patrol();
         }
         if (Awareness >= 90f)
         {
@@ -151,50 +153,51 @@ public class EnemyAI : MonoBehaviour
         }
         AwarenessBar.setAwareness(Awareness);
     }
-    private void Sight()
-    {
-        RaycastHit hit;
+    
+    // private void Sight()
+    // {
+    //     RaycastHit hit;
+    //
+    //     var origin = transform.position + Vector3.up * HeightMultiplier;
+    //     var direction = (transform.forward - transform.right).normalized;
+    //     var angleStep = Quaternion.AngleAxis(FieldOfView / RayCastsCount, Vector3.up);
+    //
+    //     for (int i = 0; i < RayCastsCount; i++)
+    //     {
+    //         Debug.DrawRay(origin, direction * SightRange, Color.red);
+    //
+    //         if (Physics.Raycast(origin, direction, out hit, SightRange))
+    //         {
+    //             if (hit.collider.name == "Player") //dont search gameobjects by name
+    //                 PlayerInSightRange = true; // Tutaj jest ustawiana wartosc PlayerInSightRange na true, ale pozniej po "wyjsciu" nie jest cofana na false :<
+    //         }
+    //
+    //         direction = angleStep * direction;
+    //     }
+    // }
 
-        var origin = transform.position + Vector3.up * HeightMultiplier;
-        var direction = (transform.forward - transform.right).normalized;
-        var angleStep = Quaternion.AngleAxis(FieldOfView / RayCastsCount, Vector3.up);
-
-        for (int i = 0; i < RayCastsCount; i++)
-        {
-            Debug.DrawRay(origin, direction * SightRange, Color.red);
-
-            if (Physics.Raycast(origin, direction, out hit, SightRange))
-            {
-                if (hit.collider.name == "Player") //dont search gameobjects by name
-                    PlayerInSightRange = true; // Tutaj jest ustawiana wartosc PlayerInSightRange na true, ale pozniej po "wyjsciu" nie jest cofana na false :<
-            }
-
-            direction = angleStep * direction;
-        }
-    }
-
-    private void Patrol()
-    {
-        if (!walkPointSet)
-            SearchWalkPoint();
-
-        if (walkPointSet && !PlayerMovement2.IsPlayerInMove)
-        {
-            Agent.velocity = Vector3.zero;
-            Agent.Stop();
-            Agent.enabled = false;
-            Agent.enabled = true;
-        }
-
-        if (walkPointSet && PlayerMovement2.IsPlayerInMove)
-            Agent.SetDestination(WalkPoint);
-
-        Vector3 distanceToWalkPoint = transform.position - WalkPoint;
-
-        // Walkpoint reached
-        if (distanceToWalkPoint.magnitude < 1f)
-            walkPointSet = false;
-    }
+    // private void Patrol()
+    // {
+    //     if (!walkPointSet)
+    //         SearchWalkPoint();
+    //
+    //     if (walkPointSet && !PlayerMovement2.IsPlayerInMove)
+    //     {
+    //         Agent.velocity = Vector3.zero;
+    //         Agent.Stop();
+    //         Agent.enabled = false;
+    //         Agent.enabled = true;
+    //     }
+    //
+    //     if (walkPointSet && PlayerMovement2.IsPlayerInMove)
+    //         Agent.SetDestination(WalkPoint);
+    //
+    //     Vector3 distanceToWalkPoint = transform.position - WalkPoint;
+    //
+    //     // Walkpoint reached
+    //     if (distanceToWalkPoint.magnitude < 1f)
+    //         walkPointSet = false;
+    // }
 
     private void SearchWalkPoint()
     {
@@ -210,15 +213,15 @@ public class EnemyAI : MonoBehaviour
 
     private void Chase()
     {
-        if (PlayerMovement2.IsPlayerInMove)
-            Agent.SetDestination(playerPosition);
-        if (!PlayerMovement2.IsPlayerInMove)
-        {
-            Agent.velocity = Vector3.zero;
-            Agent.Stop();
-            Agent.enabled = false;
-            Agent.enabled = true;
-        }
+        // if (PlayerMovement2.IsPlayerInMove)
+        //     Agent.SetDestination(playerPosition);
+        // if (!PlayerMovement2.IsPlayerInMove)
+        // {
+        //     Agent.velocity = Vector3.zero;
+        //     Agent.Stop();
+        //     Agent.enabled = false;
+        //     Agent.enabled = true;
+        // }
     }
 
     private void Attack()
