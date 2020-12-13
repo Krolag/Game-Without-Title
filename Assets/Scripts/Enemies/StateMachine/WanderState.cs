@@ -9,7 +9,7 @@ public class WanderState : StateMachineBehaviour
     public NavMeshAgent NavMeshAgent => _navMeshAgent;
     public const string TransitionParameter = "State";
     #endregion
-    
+
     private static readonly int State = Animator.StringToHash(TransitionParameter);
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -33,7 +33,7 @@ public class WanderState : StateMachineBehaviour
         }
         else
         {
-            _navMeshAgent.isStopped = false;   
+            _navMeshAgent.isStopped = false;
             // If destination point is reached, go back to idle state
             if (_navMeshAgent.hasPath)
             {
@@ -41,7 +41,7 @@ public class WanderState : StateMachineBehaviour
                         _settings.DestinationPoints[_settings.IndexOfCurrentDestinationPoint].transform.position) <
                     _settings.MinimumDistanceFromPoint)
                 {
-                    _settings.IndexOfCurrentDestinationPoint = (int) Random.Range(0, _settings.DestinationPoints.Length);
+                    _settings.IndexOfCurrentDestinationPoint = (int)Random.Range(0, _settings.DestinationPoints.Length);
                     _navMeshAgent.SetDestination(_settings.DestinationPoints[_settings.IndexOfCurrentDestinationPoint]
                         .transform.position);
                 }
@@ -69,13 +69,13 @@ public class WanderState : StateMachineBehaviour
             }
         }
     }
-    
+
     private void PlayerInSight(Animator animator)
     {
         var origin = _navMeshAgent.transform.position + Vector3.up * _settings.HeightMultiplier;
         var direction = (_navMeshAgent.transform.forward - _navMeshAgent.transform.right).normalized;
         var angleStep = Quaternion.AngleAxis(_settings.FieldOfView / _settings.RayCastsCount, Vector3.up);
-        
+
         for (var i = 0; i < _settings.RayCastsCount; i++)
         {
             Debug.DrawRay(origin, direction * _settings.SightRange, Color.white);
@@ -83,7 +83,10 @@ public class WanderState : StateMachineBehaviour
             if (Physics.Raycast(origin, direction, out var hit, _settings.SightRange))
             {
                 if (hit.collider.CompareTag("Player"))
+                {
+                    _settings.PositionToInvestigate = _settings.Player.transform.position;
                     animator.SetInteger(State, (int)Transition.INVESTIGATE);
+                }
             }
 
             direction = angleStep * direction;

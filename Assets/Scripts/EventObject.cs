@@ -12,13 +12,22 @@ public class EventObject : ScriptableObject
         listeners = new List<EnemySettings>(FindObjectsOfType<EnemySettings>());
     }
 
+    public void RegisterListener(EnemySettings enemy)
+    {
+        listeners.Add(enemy);
+    }
+
+    public void RemoveListener(EnemySettings enemy)
+    {
+        listeners.Remove(enemy);
+    }
     public void Invoke(GameObject source, float range = Mathf.Infinity)
     {
         foreach (var listener in listeners)
         {
             if (Vector3.Distance(listener.gameObject.transform.position, source.transform.position) < range)
             {
-                //listeners.hear or something like thats
+                listener.HeardNoise(source.transform.position);
             }
         }
     }
@@ -27,4 +36,6 @@ public class EventObject : ScriptableObject
     {
         listeners.Clear();
     }
+
+    
 }

@@ -585,6 +585,7 @@ MonoBehaviour:
   WanderAcceleration: 5
   InvestigateSpeed: 10
   InvestigateAcceleration: 10
+  noiseEvent: {fileID: 11400000, guid: f5b9364799115b74d8d276d815a1be83, type: 2}
 --- !u!95 &-3190012666318365833
 Animator:
   serializedVersion: 3

@@ -29,9 +29,14 @@ public class InvestigateState : StateMachineBehaviour
         PlayerInSight(animator);
 
         // Check if enemy has path or if the destination is not set as player position
-        if (!_navMeshAgent.hasPath || _navMeshAgent.destination != _settings.Player.transform.position)
-            _navMeshAgent.SetDestination(_settings.Player.transform.position);
+        if (!_navMeshAgent.hasPath || _navMeshAgent.destination != _settings.PositionToInvestigate)
+            _navMeshAgent.SetDestination(_settings.PositionToInvestigate);
         
+        //this should only work for nosie event, if positinToInvestigate is player he shold be killed before this condition is met
+        if(_navMeshAgent.remainingDistance < 3.0f)
+            animator.SetInteger(State, (int)Transition.WANDER);
+
+
         // Check for current Awarness
         if (_settings.CurrentAwarness >= 100f)
         {
@@ -54,7 +59,10 @@ public class InvestigateState : StateMachineBehaviour
             if (Physics.Raycast(origin, direction, out var hit, _settings.SightRange))
             {
                 if (hit.collider.CompareTag("Player"))
+                {
+                    _settings.PositionToInvestigate = _settings.Player.transform.position;
                     _settings.EnemyAwareness(_navMeshAgent);
+                }
             }
 
             direction = angleStep * direction;

@@ -25,6 +25,7 @@ public class AttackState : StateMachineBehaviour
         if (_settings.CurrentAwarness == 100.0f)
         {
             animator.SetInteger(State, (int)Transition.IDLE);
+            _settings.noiseEvent.RemoveAllListeners();
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
     }

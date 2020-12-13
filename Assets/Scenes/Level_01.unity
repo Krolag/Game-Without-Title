@@ -408,6 +408,12 @@ PrefabInstance:
       propertyPath: m_Interpolate
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8360615201606735192, guid: bc02cea4af1cee847a2009056d3807cb,
+        type: 3}
+      propertyPath: behaviour
+      value: 
+      objectReference: {fileID: 11400000, guid: 84e6e901695bbb74e973d7b756ba8255,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc02cea4af1cee847a2009056d3807cb, type: 3}
 --- !u!1001 &20328355
