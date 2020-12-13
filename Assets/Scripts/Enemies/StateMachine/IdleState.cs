@@ -46,8 +46,7 @@ public class IdleState : StateMachineBehaviour
         _playerPosition = _settings.Player.transform.position;
         
         // Check if player is in move
-        // Check if player is in move
-        if (!PlayerMovement2.IsPlayerInMove)
+        if (!PlayerMovement.IsPlayerInMove)
         {
             _navMeshAgent.isStopped = true;
             _navMeshAgent.enabled = false;

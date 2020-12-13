@@ -28,23 +28,33 @@ public class InvestigateState : StateMachineBehaviour
     {
         PlayerInSight(animator);
 
-        _navMeshAgent.SetDestination(_settings.Player.transform.position);
+        // Check if enemy has path or if the destination is not set as player position
+        if (!_navMeshAgent.hasPath || _navMeshAgent.destination != _settings.Player.transform.position)
+            _navMeshAgent.SetDestination(_settings.Player.transform.position);
+        
+        // Check for current Awarness
+        if (_settings.CurrentAwarness >= 100f)
+        {
+            _settings.CurrentAwarness = 100f;
+            animator.SetInteger(State, (int)Transition.ATTACK);
+        }
+        _settings.AwarenessBar.setAwareness(_settings.CurrentAwarness);
     }
-    
+
     private void PlayerInSight(Animator animator)
     {
         var origin = _navMeshAgent.transform.position + Vector3.up * _settings.HeightMultiplier;
         var direction = (_navMeshAgent.transform.forward - _navMeshAgent.transform.right).normalized;
-        var angleStep = Quaternion.AngleAxis(_settings.FieldOfView / _settings.RayCastCount, Vector3.up);
+        var angleStep = Quaternion.AngleAxis(_settings.FieldOfView / _settings.RayCastsCount, Vector3.up);
         
-        for (var i = 0; i < _settings.RayCastCount; i++)
+        for (var i = 0; i < _settings.RayCastsCount; i++)
         {
             Debug.DrawRay(origin, direction * _settings.SightRange, Color.yellow);
 
             if (Physics.Raycast(origin, direction, out var hit, _settings.SightRange))
             {
                 if (hit.collider.CompareTag("Player"))
-                    Debug.Log("ATTACK!");
+                    _settings.EnemyAwareness(_navMeshAgent);
             }
 
             direction = angleStep * direction;

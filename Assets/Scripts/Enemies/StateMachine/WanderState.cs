@@ -25,7 +25,7 @@ public class WanderState : StateMachineBehaviour
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // Check if player is in move
-        if (!PlayerMovement2.IsPlayerInMove)
+        if (!PlayerMovement.IsPlayerInMove)
         {
             _navMeshAgent.isStopped = true;
             _navMeshAgent.enabled = false;
@@ -53,21 +53,36 @@ public class WanderState : StateMachineBehaviour
 
         // Check if player in sight
         PlayerInSight(animator);
+        // Decrease awarness if it's between 20 and 80
+        DecreaseAwarness();
+    }
+
+    private void DecreaseAwarness()
+    {
+        if (_settings.CurrentAwarness > 20 && _settings.CurrentAwarness < 80)
+        {
+            _settings.CurrentAwarness -= 1.5f * Time.deltaTime;
+            if (_settings.CurrentAwarness < 25)
+            {
+                _settings.SightRange = 30f;
+                _settings.RayCastsCount = 30;
+            }
+        }
     }
     
     private void PlayerInSight(Animator animator)
     {
         var origin = _navMeshAgent.transform.position + Vector3.up * _settings.HeightMultiplier;
         var direction = (_navMeshAgent.transform.forward - _navMeshAgent.transform.right).normalized;
-        var angleStep = Quaternion.AngleAxis(_settings.FieldOfView / _settings.RayCastCount, Vector3.up);
+        var angleStep = Quaternion.AngleAxis(_settings.FieldOfView / _settings.RayCastsCount, Vector3.up);
         
-        for (var i = 0; i < _settings.RayCastCount; i++)
+        for (var i = 0; i < _settings.RayCastsCount; i++)
         {
             Debug.DrawRay(origin, direction * _settings.SightRange, Color.white);
 
             if (Physics.Raycast(origin, direction, out var hit, _settings.SightRange))
             {
-                if (hit.collider.name == "Player") //dont search gameobjects by name
+                if (hit.collider.CompareTag("Player"))
                     animator.SetInteger(State, (int)Transition.INVESTIGATE);
             }
 
