@@ -501,7 +501,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3207133382335710248}
   - component: {fileID: 3207133382335710254}
-  - component: {fileID: 3207133382335710249}
+  - component: {fileID: 7867143041348371079}
+  - component: {fileID: -3190012666318365833}
   - component: {fileID: 6074665190471671322}
   - component: {fileID: -1127232152032399192}
   - component: {fileID: 2815764533172287377}
@@ -551,7 +552,7 @@ NavMeshAgent:
   m_BaseOffset: 1.9
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &3207133382335710249
+--- !u!114 &7867143041348371079
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -560,28 +561,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 3207133382335710251}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c1928c0a8c8bf544db7ab9aa62a3979b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4bb11cd51228375449ee4cf51e4929c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Agent: {fileID: 3207133382335710254}
+  DestinationPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  IndexOfCurrentDestinationPoint: 0
+  MinimumDistanceFromPoint: 5
   Player: {fileID: 0}
-  WhatIsGround:
-    serializedVersion: 2
-    m_Bits: 256
-  WhatIsPlayer:
-    serializedVersion: 2
-    m_Bits: 512
-  WalkPoint: {x: 0, y: 0, z: 0}
-  WalkPointRange: 8
-  PlayerInSightRange: 0
+  HeightMultiplier: 0.3
+  FieldOfView: 120
   SightRange: 30
   RayCastsCount: 30
-  HeightMultiplier: 0.3
-  FieldOfView: 100
-  Awareness: 0
-  AwarenessTime: 5
-  PlayerObject: {fileID: 0}
   AwarenessBar: {fileID: 314679117}
+  CurrentAwarness: 0
+  MaxAwarness: 100
+  AwarenessTime: 5
+  WanderSpeed: 5
+  WanderAcceleration: 5
+  InvestigateSpeed: 10
+  InvestigateAcceleration: 10
+--- !u!95 &-3190012666318365833
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3207133382335710251}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 146a32e87dd66dc419ae93eab3cef11b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!136 &6074665190471671322
 CapsuleCollider:
   m_ObjectHideFlags: 0

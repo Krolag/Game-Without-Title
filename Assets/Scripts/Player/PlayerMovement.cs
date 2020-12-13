@@ -1,146 +1,255 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, InputActionsMap.IPlayerActions
 {
-    //Zmienne do sprawdzania czy gracz znajduje sie w powietrzu czy nie
-    public Transform GroundCheck;
-    public float GroundDistanace = 0.4f; //<- promien kuli pod graczem
-    public LayerMask GroundMask;
+    public CharacterController controller;
     private Vector3 velocity;
-    
-    //Zmienne do sterowania graczem w osiach XYZ
-    private float moveForward;
-    private float moveSide;
-    private float moveUp;
-    
-    //Zmienne okreslajace predkosc poruszania sie i predkosc skoku
-    public float Speed = 5f;
-    public float JumpSpeed = 5f;
-    
-    private Rigidbody rig;
 
+    // Zmienne okreslajace kolejno: aktualna predkosc gracza, sile grawitacji, wysokosc skoku
+    public float Speed = 8f;
+    public float Gravity = -9.81f;
+    public float JumpHeight = 3f;
+
+    // Zmienne sluzace do zbadania czy gracz jest w powietrzu czy na ziemi
+    public Transform GroundCheck;
+    public float GroundDistance = 0.4f;
+    public LayerMask GroundMask;
     private bool isGrounded;
 
-    CapsuleCollider collider;
+    // Zmienne sprawdzajace stan gracza
+    public static bool isSprinting = false;
+    public static bool isCrouching = false;
 
-    //Zmienne okreslajace wysokosc gracza w zaleznosci od tego w jakims tanie sie znajduje (idle/crouching/sliding)
+    // Zmienne opisujace predkosc w zaleznosci od stanu w jakim znajduje sie gracz
+    public float SprintSpeed = 12f;
+    public float WalkSpeed = 8f;
+    public float CrouchSpeed = 5f;
+
+    // Wysokosc gracza na stojaco / w przykucu
     public float OriginalHeight;
     public float ReducedHeight;
-    
-    //Zmienne okreslajace predkosc wslizgu i to czy wslizg wystepuje
-    public float SlideSpeed = 10f;
-    public bool IsSliding = false;
 
-    //Zmienne okreslajaca predkosc w trakcie sprintu i to czy sprint wystepuje
-    public float SpeedMultiplier = 1.5f;
-    private bool isSprinting = false;
-    
-    // Start is called before the first frame update
+    // Zmienna zapisujaca ruch gracza
+    public static bool IsPlayerInMove = false;
+    private Vector3 currentPosition;
+
+    //Zmienne do wslizgu
+    public float dashSpeed;
+    public float dashTime;
+    Vector3 move = Vector3.zero;
+
+
+    private float x = 0f, z = 0f;
+
+    // TO DO:
+    // Zmienic metode Start na Awake, poczytaj czym sie roznia i co w ktorej lepiej robic
     void Start()
     {
-        rig = GetComponent<Rigidbody>();
-        collider = GetComponent<CapsuleCollider>();
-        OriginalHeight = collider.height;
+        InputManager.Instance.SetCallbacks(this);
+
+        Speed = WalkSpeed; // Inicjacja predkosci poczatkowej
+        OriginalHeight = controller.height; // Inicjacja wysokosci poczatkowej
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistanace, GroundMask);
+        // Zbierz obecna pozycje gracza
+        currentPosition = this.transform.position;
 
-        if (isGrounded && velocity.y < 0)
+        velocity.y += Gravity * Time.deltaTime;
+
+        controller.Move(velocity * Time.deltaTime);
+
+        if (!IsPlayerInMove && !isCrouching)
+        {
+            isSprinting = IsPlayerInMove;
+            Walk();
+        }
+
+        // Poruszanie sie w osiach XYZ
+        Move();
+
+        // Sprawdz, czy gracz sie poruszyl w tej iteracji
+        CheckForMovement();
+
+    }
+    
+    private void Move()
+    {
+        isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
+
+        if (isGrounded && velocity.y < 0 && controller.height == OriginalHeight)
         {
             velocity.y = -2f;
         }
-        //Sprinting
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        else if (isGrounded && controller.height == ReducedHeight)
         {
-            isSprinting = true;
-            Speed *= SpeedMultiplier;
+            velocity.y = -20f;
         }
-        
-        else if (Input.GetKeyUp(KeyCode.LeftShift))
-        {
-            isSprinting = false;
-            Speed /= SpeedMultiplier;
-        }
-        
-        Movement();
-        
-        //Jumping
-        if (isGrounded && Input.GetKey(KeyCode.Space))
-            Jump();
-        
-        //Sliding
-        if(isSprinting)
-        {
-            if (Input.GetKeyDown(KeyCode.Q))//LeftControl))
-                Slide();
-            else if (Input.GetKeyUp(KeyCode.Q))//LeftControl))
-                GoUp();
-        }
-        
-        //Crouching
-        if(Input.GetKeyDown(KeyCode.LeftControl) || Input.GetKeyDown(KeyCode.C))
-            Crouch();
-        else if(Input.GetKeyUp(KeyCode.LeftControl) || Input.GetKeyUp(KeyCode.C))
-            GoUp();
+
+        move = transform.right * x + transform.forward * z;
+
+        controller.Move(Time.deltaTime * Speed * move);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void CheckForMovement()
     {
-        if (collision.gameObject.tag == "Ground")
+        if (this.transform.position != currentPosition)
         {
-            isGrounded = true;
+            IsPlayerInMove = true;
+        }
+        else
+        {
+            IsPlayerInMove = false;
         }
     }
-    
-    private void OnCollisionExit(Collision collision)
+
+    private void Sprint()
     {
-        if (collision.gameObject.tag == "Ground")
+        Speed = SprintSpeed;
+        if (isCrouching)
         {
-            isGrounded = false;
+            isCrouching = !isCrouching;
+            controller.height = OriginalHeight;
         }
     }
-    
-    //Movement
-    private void Movement()
-    {
-        moveForward = Input.GetAxis("Vertical") * Speed;
-        moveSide = Input.GetAxis("Horizontal") * Speed;
 
-        //Moving the character forward and on side;
-        rig.velocity = (transform.forward * moveForward) + (transform.right * moveSide) + (transform.up * rig.velocity.y); // <-- ten kawalek kodu powoduje ze sie podskakuje na schodach
+    private void Walk()
+    {
+        Speed = WalkSpeed;
     }
 
-    //Jumping
     private void Jump()
     {
-        moveUp = Input.GetAxis("Jump") * JumpSpeed;
-        
-        rig.AddForce(transform.up * moveUp, ForceMode.VelocityChange);
-        isGrounded = false;
+        if (isCrouching)
+        {
+            isCrouching = !isCrouching;
+            controller.height = OriginalHeight;
+
+            // Gdy kucamy mamy mozliwosc wyzszego skoku
+            JumpHeight *= 1.3f;
+            velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+            JumpHeight /= 1.3f;
+            Speed = WalkSpeed;
+        }
+        else if (isSprinting)
+        {
+            // Jak biegamy to tez xD
+            JumpHeight *= 1.3f;
+            velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
+            JumpHeight /= 1.3f;
+        }
+        else
+            velocity.y = Mathf.Sqrt(JumpHeight * -2f * Gravity);
     }
-    
-    //Sliding
-    private void Slide()
-    {
-        collider.height = ReducedHeight;
-        rig.AddForce(transform.forward * SlideSpeed, ForceMode.Impulse);
-        isSprinting = false;
-    }
-    
-    //Crouching
+
     private void Crouch()
     {
-        collider.height = ReducedHeight;
+        if (isCrouching == true)
+        {
+            controller.height = ReducedHeight;
+            Speed = CrouchSpeed;
+            if (isSprinting)
+            {
+                isSprinting = !isSprinting;
+                StartCoroutine(Dash());
+            }
+        }
+        else
+        {
+            controller.height = OriginalHeight;
+            Speed = WalkSpeed;
+        }
     }
-    
-    private void GoUp()
+
+    IEnumerator Dash()
     {
-        collider.height = OriginalHeight;
+        float startTime = Time.time;
+        while (Time.time < startTime + dashTime)
+        {
+            controller.Move(transform.forward * dashSpeed * Time.deltaTime);
+            controller.height = ReducedHeight * 0.3f;
+            if (Time.time > startTime + dashTime - 0.05f)
+                controller.height = ReducedHeight;
+            yield return null;
+        }
+    }
+
+    public void OnInteraction(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            Ray ray = new Ray(Camera.main.gameObject.transform.position, Camera.main.gameObject.transform.forward);
+            RaycastHit[] hits = Physics.RaycastAll(ray, 4f);
+
+            foreach (var hit in hits)
+            {
+                Interactable interactable;
+                if (hit.collider.TryGetComponent<Interactable>(out interactable))
+                {
+                    interactable.Interact(GetComponent<Player>());
+                }
+            }
+        }
+    }
+
+    public void OnMovement(InputAction.CallbackContext context)
+    {
+        Vector2 movement = context.ReadValue<Vector2>();
+
+        x = movement.x;
+        z = movement.y;
+    }
+
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        // Skradanie
+        if (context.phase == InputActionPhase.Started)
+        {
+            isCrouching = !isCrouching;
+            Crouch();
+        }
+    }
+
+    public void OnThrow(InputAction.CallbackContext context)
+    {
+        if (context.phase == InputActionPhase.Started)
+        {
+            GetComponent<Player>().Throw();
+        }
+    }
+
+    public void OnSprint(InputAction.CallbackContext context)
+    {
+        // Sprint
+        if (context.phase == InputActionPhase.Performed && isSprinting == false)
+        {
+            isSprinting = !isSprinting;
+            Sprint();
+        }
+        //Chodzenie
+        else if (context.phase == InputActionPhase.Performed && isSprinting == true)
+        {
+            isSprinting = !isSprinting;
+            Walk();
+        }
+        else if (!IsPlayerInMove && !isCrouching)
+        {
+            isSprinting = IsPlayerInMove;
+            Walk();
+        }
+    }
+
+    public void OnJump(InputAction.CallbackContext context)
+    {
+        // Podskok
+        if (context.phase == InputActionPhase.Started && isGrounded)
+        {
+            Jump();
+        }
     }
 }
