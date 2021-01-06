@@ -7,7 +7,7 @@ public class PlayerMovement2 : MonoBehaviour, InputActionsMap.IPlayerActions
 {
     public CharacterController controller;
     private Vector3 velocity;
-
+    
     // Zmienne okreslajace kolejno: aktualna predkosc gracza, sile grawitacji, wysokosc skoku
     public float Speed = 8f;
     public float Gravity = -9.81f;
@@ -52,14 +52,13 @@ public class PlayerMovement2 : MonoBehaviour, InputActionsMap.IPlayerActions
 
         Speed = WalkSpeed; // Inicjacja predkosci poczatkowej
         OriginalHeight = controller.height; // Inicjacja wysokosci poczatkowej
-
+        
     }
 
     private void Update()
     {
         // Zbierz obecna pozycje gracza
         currentPosition = this.transform.position;
-
 
         velocity.y += Gravity * Time.deltaTime;
 
@@ -181,7 +180,7 @@ public class PlayerMovement2 : MonoBehaviour, InputActionsMap.IPlayerActions
         while (Time.time < startTime + dashTime)
         {
             controller.Move(transform.forward * dashSpeed * Time.deltaTime);
-            controller.height = ReducedHeight * 0.3f;
+            controller.height = ReducedHeight * 0.1f;
             if (Time.time > startTime + dashTime - 0.05f)
                 controller.height = ReducedHeight;
             yield return null;
