@@ -26,7 +26,7 @@ public class AttackState : StateMachineBehaviour
         {
             animator.SetInteger(State, (int)Transition.IDLE);
             _settings.noiseEvent.RemoveAllListeners();
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            FindObjectOfType<LevelManager>().RestartLevel();
         }
     }
 

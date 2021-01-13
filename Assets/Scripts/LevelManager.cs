@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class LevelManager : MonoBehaviour
 
     public void RestartLevel()
     {
-        
+        _levelIndex = 0;
+        SceneManager.LoadScene("newLevel_00", LoadSceneMode.Single);
     }
 }

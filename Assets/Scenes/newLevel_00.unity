@@ -1793,6 +1793,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
       propertyPath: DestinationPoints.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -2072,6 +2077,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2988839692056720925, guid: ce21feffc297a0f479fe9c47be7d7f04,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2988839692056720925, guid: ce21feffc297a0f479fe9c47be7d7f04,
+        type: 3}
       propertyPath: CurrentAwarness
       value: 0
       objectReference: {fileID: 0}
@@ -2109,6 +2119,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FieldOfView
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 5671236179389342423, guid: ce21feffc297a0f479fe9c47be7d7f04,
+        type: 3}
+      propertyPath: MaxAwarness
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5671236179389342423, guid: ce21feffc297a0f479fe9c47be7d7f04,
         type: 3}
@@ -3177,6 +3192,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
       propertyPath: DestinationPoints.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -3323,6 +3343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FieldOfView
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
+      propertyPath: MaxAwarness
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
@@ -4744,6 +4769,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
       propertyPath: DestinationPoints.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -4883,6 +4913,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FieldOfView
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
+      propertyPath: MaxAwarness
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
@@ -5198,6 +5233,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
       propertyPath: DestinationPoints.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -5497,6 +5537,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FieldOfView
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
+      propertyPath: MaxAwarness
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
@@ -5842,6 +5887,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FieldOfView
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
+      propertyPath: MaxAwarness
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
@@ -6293,6 +6343,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FieldOfView
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
+      propertyPath: MaxAwarness
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
@@ -7930,6 +7985,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
       propertyPath: DestinationPoints.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -9401,6 +9461,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
       propertyPath: DestinationPoints.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -10359,6 +10424,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
       propertyPath: DestinationPoints.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -10484,6 +10554,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FieldOfView
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
+      propertyPath: MaxAwarness
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
@@ -11456,6 +11531,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FieldOfView
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
+      propertyPath: MaxAwarness
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
@@ -13426,6 +13506,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
       propertyPath: DestinationPoints.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -13778,6 +13863,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}
+      propertyPath: MaxAwarness
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
       propertyPath: DestinationPoints.Array.size
       value: 10
       objectReference: {fileID: 0}
@@ -14093,6 +14183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: FieldOfView
       value: 110
+      objectReference: {fileID: 0}
+    - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
+        type: 3}
+      propertyPath: MaxAwarness
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7867143041348371079, guid: a17c870ff686d424a8bfb6bfbdafd006,
         type: 3}

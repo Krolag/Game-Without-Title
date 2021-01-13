@@ -12,6 +12,6 @@ public class UI : MonoBehaviour
 
     public void LoadFirstLevel()
     {
-        SceneManager.LoadScene("Level_01", LoadSceneMode.Single);
+        SceneManager.LoadScene("newLevel_00", LoadSceneMode.Single);
     }
 }
