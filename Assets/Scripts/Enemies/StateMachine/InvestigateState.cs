@@ -42,7 +42,7 @@ public class InvestigateState : StateMachineBehaviour
                 _navMeshAgent.SetDestination(_settings.PositionToInvestigate);
 
             //this should only work for nosie event, if positinToInvestigate is player he shold be killed before this condition is met
-            if (_navMeshAgent.remainingDistance < 3.0f)
+            else if (_navMeshAgent.remainingDistance < 1.5f)
                 animator.SetInteger(State, (int) Transition.WANDER);
 
 
