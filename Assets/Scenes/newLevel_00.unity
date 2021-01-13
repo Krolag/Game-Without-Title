@@ -4224,7 +4224,7 @@ MonoBehaviour:
   - {fileID: 1815311378}
   - {fileID: 794323862}
   - {fileID: 1304381203}
-  _levelIndex: 1
+  _levelIndex: 0
   _noiseListener: {fileID: 11400000, guid: f5b9364799115b74d8d276d815a1be83, type: 2}
 --- !u!43 &997870797
 Mesh:
