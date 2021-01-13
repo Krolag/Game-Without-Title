@@ -17,6 +17,10 @@ public class EnemySettings : MonoBehaviour
     public float SightRange;
     public int RayCastsCount;
 
+    [Header("Cone sight")]
+    public Collider sight;
+    public bool PlayerInSight { get; private set; }
+
     [Header("Awarness")]
     public AwarenessBar AwarenessBar;
     public float CurrentAwarness;
@@ -39,6 +43,12 @@ public class EnemySettings : MonoBehaviour
         noiseEvent.RegisterListener(this);
         AwarenessBar.SetMaxAwareness(MaxAwarness);
         PositionToInvestigate = Player.transform.position;
+
+        PlayerInSight = false;
+
+        float r = Mathf.Tan(Mathf.Deg2Rad * (FieldOfView / 2f)) * SightRange;
+        sight.gameObject.transform.localScale = new Vector3(r, r, SightRange) / 2f;
+        sight.gameObject.transform.position += Vector3.forward * SightRange / 2f; 
     }
 
     private void OnEnable()
@@ -97,5 +107,22 @@ public class EnemySettings : MonoBehaviour
         }
 
         AwarenessBar.setAwareness(CurrentAwarness);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("trigger Enter");
+        if (other.gameObject.TryGetComponent<Player>(out var component))
+        {
+            PlayerInSight = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<Player>(out var component))
+        {
+            PlayerInSight = false;
+        }
     }
 }

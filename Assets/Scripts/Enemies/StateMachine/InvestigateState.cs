@@ -48,24 +48,40 @@ public class InvestigateState : StateMachineBehaviour
 
     private void PlayerInSight(Animator animator)
     {
-        var origin = _navMeshAgent.transform.position + Vector3.up * _settings.HeightMultiplier;
-        var direction = (_navMeshAgent.transform.forward - _navMeshAgent.transform.right).normalized;
-        var angleStep = Quaternion.AngleAxis(_settings.FieldOfView / _settings.RayCastsCount, Vector3.up);
+        //var origin = _navMeshAgent.transform.position + Vector3.up * _settings.HeightMultiplier;
+        //var direction = (_navMeshAgent.transform.forward - _navMeshAgent.transform.right).normalized;
+        //var angleStep = Quaternion.AngleAxis(_settings.FieldOfView / _settings.RayCastsCount, Vector3.up);
         
-        for (var i = 0; i < _settings.RayCastsCount; i++)
+        //for (var i = 0; i < _settings.RayCastsCount; i++)
+        //{
+        //    Debug.DrawRay(origin, direction * _settings.SightRange, Color.yellow);
+
+        //    if (Physics.Raycast(origin, direction, out var hit, _settings.SightRange))
+        //    {
+        //        if (hit.collider.CompareTag("Player"))
+        //        {
+        //            _settings.PositionToInvestigate = _settings.Player.transform.position;
+        //            _settings.EnemyAwareness(_navMeshAgent);
+        //        }
+        //    }
+
+        //    direction = angleStep * direction;
+        //}
+
+        if (!_settings.PlayerInSight)
+            return;
+
+        var position = _navMeshAgent.transform.position;
+        var origin = position + Vector3.up * _settings.HeightMultiplier;
+        var direction = (_settings.Player.transform.position - position).normalized;
+
+        if (Physics.Raycast(origin, direction, out var hit))
         {
-            Debug.DrawRay(origin, direction * _settings.SightRange, Color.yellow);
-
-            if (Physics.Raycast(origin, direction, out var hit, _settings.SightRange))
+            if (hit.collider.CompareTag("Player"))
             {
-                if (hit.collider.CompareTag("Player"))
-                {
-                    _settings.PositionToInvestigate = _settings.Player.transform.position;
-                    _settings.EnemyAwareness(_navMeshAgent);
-                }
+                _settings.PositionToInvestigate = _settings.Player.transform.position;
+                _settings.EnemyAwareness(_navMeshAgent);
             }
-
-            direction = angleStep * direction;
         }
     }
 }
