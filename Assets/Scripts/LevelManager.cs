@@ -30,9 +30,18 @@ public class LevelManager : MonoBehaviour
     {
         _levelPrefabs[_levelIndex].SetActive(false);
         _levelIndex++;
-        ResetAllListeners();
-        _player.transform.position = _levelPrefabs[_levelIndex].GetComponent<LevelChanger>().EntryPoint.position;
-        _levelPrefabs[_levelIndex].SetActive(true);
+
+        if (_levelIndex < _levelPrefabs.Length)
+        {
+            ResetAllListeners();
+            _player.transform.position = _levelPrefabs[_levelIndex].GetComponent<LevelChanger>().EntryPoint.position;
+            _levelPrefabs[_levelIndex].SetActive(true);
+        }
+        else
+        {
+            ResetAllListeners();
+            SceneManager.LoadScene("ExitScreen", LoadSceneMode.Single);
+        }
     }
 
     public void ResetAllListeners()
