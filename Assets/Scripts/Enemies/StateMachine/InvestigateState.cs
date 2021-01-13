@@ -75,8 +75,10 @@ public class InvestigateState : StateMachineBehaviour
         var origin = position + Vector3.up * _settings.HeightMultiplier;
         var direction = (_settings.Player.transform.position - position).normalized;
 
+        Debug.DrawRay(origin, direction * _settings.SightRange, Color.yellow);
         if (Physics.Raycast(origin, direction, out var hit))
         {
+            Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.CompareTag("Player"))
             {
                 _settings.PositionToInvestigate = _settings.Player.transform.position;
