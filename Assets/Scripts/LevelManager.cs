@@ -14,11 +14,15 @@ public class LevelManager : MonoBehaviour
 
     public GameObject Player => _player;
 
+    private void Awake()
+    {
+        ResetAllListeners();
+    }
+
     private void Start()
     {
         _levelPrefabs[_levelIndex].SetActive(true);
         _player.transform.position = _levelPrefabs[_levelIndex].GetComponent<LevelChanger>().EntryPoint.position;
-        ResetAllListeners();
     }
 
     public void NextLevel()

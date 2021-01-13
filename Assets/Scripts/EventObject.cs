@@ -14,11 +14,13 @@ public class EventObject : ScriptableObject
 
     public void RegisterListener(EnemySettings enemy)
     {
+        //Debug.Log("added listener");
         listeners.Add(enemy);
     }
 
     public void RemoveListener(EnemySettings enemy)
     {
+        //Debug.Log("remove listener");
         listeners.Remove(enemy);
     }
     public void Invoke(GameObject source, float range = Mathf.Infinity)
@@ -34,6 +36,7 @@ public class EventObject : ScriptableObject
 
     public void RemoveAllListeners()
     {
+        //Debug.Log("remove listener");
         listeners.Clear();
     }
 
