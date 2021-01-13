@@ -13,19 +13,16 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
-        if (_levelIndex == 0)
-        {
-            _levelPrefabs[_levelIndex].SetActive(true);
-            _player.transform.position = _levelPrefabs[_levelIndex].GetComponent<LevelChanger>().EntryPoint.transform.position;
-        }
+        _levelPrefabs[_levelIndex].SetActive(true);
+        _player.transform.position = _levelPrefabs[_levelIndex].GetComponent<LevelChanger>().EntryPoint.position;
     }
 
     public void NextLevel()
     {
         _levelPrefabs[_levelIndex].SetActive(false);
         _levelIndex++;
+        _player.transform.position = _levelPrefabs[_levelIndex].GetComponent<LevelChanger>().EntryPoint.position;
         _levelPrefabs[_levelIndex].SetActive(true);
-        _player.transform.position = _levelPrefabs[_levelIndex].GetComponent<LevelChanger>().EntryPoint.transform.position;
     }
 
     public void RestartLevel()
