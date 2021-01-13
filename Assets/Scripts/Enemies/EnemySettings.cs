@@ -40,7 +40,6 @@ public class EnemySettings : MonoBehaviour
 
     private void Awake()
     {
-        noiseEvent.RegisterListener(this);
         AwarenessBar.SetMaxAwareness(MaxAwarness);
         PositionToInvestigate = Player.transform.position;
 
@@ -48,22 +47,23 @@ public class EnemySettings : MonoBehaviour
 
         float r = Mathf.Tan(Mathf.Deg2Rad * (FieldOfView / 2f)) * SightRange;
         sight.gameObject.transform.localScale = new Vector3(r, r, SightRange) / 2f;
-        sight.gameObject.transform.position += Vector3.forward * SightRange / 2f; 
+        sight.gameObject.transform.position += Vector3.forward * SightRange / 2f;
     }
 
     private void OnEnable()
     {
+        noiseEvent.RegisterListener(this);
         GetComponent<Killable>().Death += OnDeath;
     }
 
     private void OnDisable()
     {
         GetComponent<Killable>().Death -= OnDeath;
+        noiseEvent.RemoveListener(this);
     }
 
     private void OnDeath()
     {
-        noiseEvent.RemoveListener(this);
         Destroy(this.gameObject);
         temporary.EnemiesLeft--;//xd
 
@@ -111,10 +111,10 @@ public class EnemySettings : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("trigger Enter");
         if (other.gameObject.TryGetComponent<Player>(out var component))
         {
             PlayerInSight = true;
+            //Debug.Log("trigger Enter: " + PlayerInSight);
         }
     }
 
@@ -123,6 +123,7 @@ public class EnemySettings : MonoBehaviour
         if (other.gameObject.TryGetComponent<Player>(out var component))
         {
             PlayerInSight = false;
+            //Debug.Log("trigger Exit: " + PlayerInSight);
         }
     }
 }
