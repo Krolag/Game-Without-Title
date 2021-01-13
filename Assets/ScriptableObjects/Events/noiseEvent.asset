@@ -12,4 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ebe402ab88c9b4c9b20f8d330e498b, type: 3}
   m_Name: noiseEvent
   m_EditorClassIdentifier: 
-  listeners: []
+  listeners:
+  - {fileID: 0}
+  - {fileID: 0}
