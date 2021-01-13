@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
             Rigidbody rigidbody = _objectToThrow.GetComponent<Rigidbody>();
             rigidbody.isKinematic = false;
             rigidbody.detectCollisions = true;
+            rigidbody.interpolation = RigidbodyInterpolation.Interpolate;
 
             _objectToThrow.Throw(Camera.main.transform.forward, 0f);
             _objectToThrow = null;
@@ -26,6 +27,7 @@ public class Player : MonoBehaviour
         Rigidbody rb = throwObject.GetComponent<Rigidbody>();
         rb.isKinematic = true;
         rb.detectCollisions = false;
+        rb.interpolation = RigidbodyInterpolation.None;
         _objectToThrow = throwObject;
         throwObject.transform.position = _throwingPosition.position;
         throwObject.transform.SetParent(_throwingPosition, false);
@@ -43,6 +45,7 @@ public class Player : MonoBehaviour
         Rigidbody rb = _objectToThrow.GetComponent<Rigidbody>();
         rb.isKinematic = false;
         rb.detectCollisions = true;
+        rb.interpolation = RigidbodyInterpolation.Interpolate;
 
         _objectToThrow.Throw(Camera.main.transform.forward, _throwStrenght);
         _objectToThrow = null;
