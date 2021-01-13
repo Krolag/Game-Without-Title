@@ -105,7 +105,7 @@ public class WanderState : StateMachineBehaviour
 
         if (Physics.Raycast(origin, direction, out var hit))
         {
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.CompareTag("Player"))
             {
                 _settings.PositionToInvestigate = _settings.Player.transform.position;

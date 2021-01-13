@@ -47,7 +47,7 @@ public class EnemySettings : MonoBehaviour
 
         float r = Mathf.Tan(Mathf.Deg2Rad * (FieldOfView / 2f)) * SightRange;
         sight.gameObject.transform.localScale = new Vector3(r, r, SightRange) / 2f;
-        sight.gameObject.transform.position += Vector3.forward * SightRange / 2f;
+        sight.gameObject.transform.position += gameObject.transform.forward * SightRange / 2f;
     }
 
     private void OnEnable()

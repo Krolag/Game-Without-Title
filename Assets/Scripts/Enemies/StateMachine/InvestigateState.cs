@@ -26,24 +26,35 @@ public class InvestigateState : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     public override void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        PlayerInSight(animator);
-
-        // Check if enemy has path or if the destination is not set as player position
-        if (!_navMeshAgent.hasPath || _navMeshAgent.destination != _settings.PositionToInvestigate)
-            _navMeshAgent.SetDestination(_settings.PositionToInvestigate);
-        
-        //this should only work for nosie event, if positinToInvestigate is player he shold be killed before this condition is met
-        if(_navMeshAgent.remainingDistance < 3.0f)
-            animator.SetInteger(State, (int)Transition.WANDER);
-
-
-        // Check for current Awarness
-        if (_settings.CurrentAwarness >= 100f)
+        if (!PlayerMovement.IsPlayerInMove)
         {
-            _settings.CurrentAwarness = 100f;
-            animator.SetInteger(State, (int)Transition.ATTACK);
+            _navMeshAgent.isStopped = true;
+            _navMeshAgent.enabled = false;
+            _navMeshAgent.enabled = true;
         }
-        _settings.AwarenessBar.setAwareness(_settings.CurrentAwarness);
+        else
+        {
+            _navMeshAgent.isStopped = false;
+            PlayerInSight(animator);
+
+            // Check if enemy has path or if the destination is not set as player position
+            if (!_navMeshAgent.hasPath || _navMeshAgent.destination != _settings.PositionToInvestigate)
+                _navMeshAgent.SetDestination(_settings.PositionToInvestigate);
+
+            //this should only work for nosie event, if positinToInvestigate is player he shold be killed before this condition is met
+            if (_navMeshAgent.remainingDistance < 3.0f)
+                animator.SetInteger(State, (int) Transition.WANDER);
+
+
+            // Check for current Awarness
+            if (_settings.CurrentAwarness >= 100f)
+            {
+                _settings.CurrentAwarness = 100f;
+                animator.SetInteger(State, (int) Transition.ATTACK);
+            }
+
+            _settings.AwarenessBar.setAwareness(_settings.CurrentAwarness);
+        }
     }
 
     private void PlayerInSight(Animator animator)
@@ -78,7 +89,7 @@ public class InvestigateState : StateMachineBehaviour
         Debug.DrawRay(origin, direction * _settings.SightRange, Color.yellow);
         if (Physics.Raycast(origin, direction, out var hit))
         {
-            Debug.Log(hit.collider.gameObject.name);
+            //Debug.Log(hit.collider.gameObject.name);
             if (hit.collider.CompareTag("Player"))
             {
                 _settings.PositionToInvestigate = _settings.Player.transform.position;

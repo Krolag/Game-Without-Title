@@ -12,6 +12,17 @@ public class Player : MonoBehaviour
     {
         if (throwObject == null)
             return;
+        if (_objectToThrow != null)
+        {
+            _objectToThrow.transform.SetParent(null);
+
+            Rigidbody rigidbody = _objectToThrow.GetComponent<Rigidbody>();
+            rigidbody.isKinematic = false;
+            rigidbody.detectCollisions = true;
+
+            _objectToThrow.Throw(Camera.main.transform.forward, 0f);
+            _objectToThrow = null;
+        }
         Rigidbody rb = throwObject.GetComponent<Rigidbody>();
         rb.isKinematic = true;
         rb.detectCollisions = false;
