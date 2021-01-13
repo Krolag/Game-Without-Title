@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: noiseBehaviour
   m_EditorClassIdentifier: 
   noiseRange: 15
-  eventObject: {fileID: 0}
+  eventObject: {fileID: 11400000, guid: f5b9364799115b74d8d276d815a1be83, type: 2}
