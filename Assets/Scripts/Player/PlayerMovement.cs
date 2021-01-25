@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour, InputActionsMap.IPlayerActions
     public CharacterController controller;
     private Vector3 velocity;
 
+    public LayerMask DefaultMask;
+
     // Zmienne okreslajace kolejno: aktualna predkosc gracza, sile grawitacji, wysokosc skoku
     public float Speed = 8f;
     public float Gravity = -9.81f;
@@ -43,6 +45,7 @@ public class PlayerMovement : MonoBehaviour, InputActionsMap.IPlayerActions
 
 
     private float x = 0f, z = 0f;
+    private EnemySettings _lastHitedEnemy;
 
     // TO DO:
     // Zmienic metode Start na Awake, poczytaj czym sie roznia i co w ktorej lepiej robic
@@ -57,6 +60,30 @@ public class PlayerMovement : MonoBehaviour, InputActionsMap.IPlayerActions
 
     private void Update()
     {
+        RaycastHit hit = new RaycastHit();
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.transform.forward, out hit, Mathf.Infinity, DefaultMask, QueryTriggerInteraction.Collide))
+        {
+            if (hit.collider.TryGetComponent<EnemySettings>(out var enemy))
+            {
+                if (_lastHitedEnemy == null)
+                {
+                    enemy.OnRayHitEnter();
+                    _lastHitedEnemy = enemy;
+                }
+                if (enemy != _lastHitedEnemy)
+                {
+                    enemy.OnRayHitEnter();
+                    _lastHitedEnemy.OnRayHitExit();
+                    _lastHitedEnemy = enemy;
+                }
+            }
+            else
+            {
+                _lastHitedEnemy?.OnRayHitExit();
+                _lastHitedEnemy = null;
+            }
+        }
+
         // Zbierz obecna pozycje gracza
         currentPosition = this.transform.position;
 

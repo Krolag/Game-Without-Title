@@ -50,6 +50,11 @@ public class EnemySettings : MonoBehaviour
         sight.gameObject.transform.position += gameObject.transform.forward * SightRange / 2f;
     }
 
+    private void Start()
+    {
+        sight.gameObject.GetComponent<Renderer>().enabled = false;
+    }
+
     private void OnEnable()
     {
         noiseEvent.RegisterListener(this);
@@ -109,6 +114,16 @@ public class EnemySettings : MonoBehaviour
         AwarenessBar.setAwareness(CurrentAwarness);
     }
 
+    public void OnRayHitEnter()
+    {
+        sight.gameObject.GetComponent<Renderer>().enabled = true;
+        //sight.gameObject.SetActive(true);
+    }
+    public void OnRayHitExit()
+    {
+        sight.gameObject.GetComponent<Renderer>().enabled = false;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<Player>(out var component))
@@ -116,6 +131,7 @@ public class EnemySettings : MonoBehaviour
             PlayerInSight = true;
             //Debug.Log("trigger Enter: " + PlayerInSight);
         }
+
     }
 
     private void OnTriggerExit(Collider other)

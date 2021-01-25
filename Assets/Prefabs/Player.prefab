@@ -309,6 +309,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controller: {fileID: 6069416190771459489}
+  DefaultMask:
+    serializedVersion: 2
+    m_Bits: 819
   Speed: 8
   Gravity: -22.563
   JumpHeight: 3
@@ -561,7 +564,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6372600985410566551
 RectTransform:
   m_ObjectHideFlags: 0
