@@ -34,12 +34,16 @@ public class LevelManager : MonoBehaviour
         if (_levelIndex < _levelPrefabs.Length)
         {
             ResetAllListeners();
+            Cursor.visible = false;
+            Screen.lockCursor = true;
             _player.transform.position = _levelPrefabs[_levelIndex].GetComponent<LevelChanger>().EntryPoint.position;
             _levelPrefabs[_levelIndex].SetActive(true);
         }
         else
         {
             ResetAllListeners();
+            Cursor.visible = true;
+            Screen.lockCursor = false;
             SceneManager.LoadScene("ExitScreen", LoadSceneMode.Single);
         }
     }

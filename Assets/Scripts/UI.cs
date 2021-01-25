@@ -8,6 +8,8 @@ public class UI : MonoBehaviour
     public void LoadMainMenu()
     {
         SceneManager.LoadScene("MainMenu", LoadSceneMode.Single);
+        Cursor.visible = true;
+        Screen.lockCursor = false;
     }
 
     public void LoadFirstLevel()
