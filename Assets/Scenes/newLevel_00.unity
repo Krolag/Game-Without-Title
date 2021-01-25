@@ -6859,7 +6859,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-163878
+  m_Name: pb_Mesh-40360
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -8397,6 +8397,11 @@ PrefabInstance:
       propertyPath: Player
       value: 
       objectReference: {fileID: 1543916773}
+    - target: {fileID: 633596099157924175, guid: 881a4735219bf474abe647251633dd67,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 3254700008559111760, guid: 881a4735219bf474abe647251633dd67,
         type: 3}
       propertyPath: _player

@@ -79,7 +79,8 @@ public class PlayerMovement : MonoBehaviour, InputActionsMap.IPlayerActions
             }
             else
             {
-                _lastHitedEnemy?.OnRayHitExit();
+                if (_lastHitedEnemy != null)
+                    _lastHitedEnemy.OnRayHitExit();
                 _lastHitedEnemy = null;
             }
         }
@@ -104,7 +105,7 @@ public class PlayerMovement : MonoBehaviour, InputActionsMap.IPlayerActions
         CheckForMovement();
 
     }
-    
+
     private void Move()
     {
         isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
