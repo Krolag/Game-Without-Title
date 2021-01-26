@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
     private Throwable _objectToThrow;
     [SerializeField] private Transform _throwingPosition;
     [SerializeField] private float _throwStrenght;
+
+    public Throwable objectToThrow => _objectToThrow;
 
     public void PickUp(Throwable throwObject)
     {
