@@ -14,10 +14,5 @@ public class temporary : MonoBehaviour
     {
         if (EnemiesLeft > 0)
             Objectives.text = "Enemies left: " + EnemiesLeft;
-        else
-        {
-            Objectives.text = "FIND THE ORB";
-            Orb.SetActive(true);
-        }
     }
 }

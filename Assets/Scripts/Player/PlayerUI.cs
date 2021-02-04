@@ -11,6 +11,7 @@ public class PlayerUI : MonoBehaviour
     
     void Update()
     {
+        _interactionText.text = "";
         Ray ray = new Ray(Camera.main.gameObject.transform.position, Camera.main.gameObject.transform.forward);
         RaycastHit[] hits = Physics.RaycastAll(ray, 4f);
 
@@ -18,17 +19,9 @@ public class PlayerUI : MonoBehaviour
         {
             Interactable interactable;
             if (hit.collider.TryGetComponent<Interactable>(out interactable))
-            {
                 _interactionText.text = "[ E ]";
-            }
-            if (GetComponentInParent<Player>().objectToThrow != null)
-            {
-                _interactionText.text = "[ RMB ]";
-            }
-            else
-            {
-                _interactionText.text = "";
-            }
         }
+        if (GetComponentInParent<Player>().objectToThrow != null)
+            _interactionText.text = "[ RMB ]";
     }
 }
